@@ -1,35 +1,25 @@
 //LOGIN SCRIPT
 
 
-function makeUsers() {}
+function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const admin = {
-        name: "Jonathan_Epp",
-        pw: "12345"
+        name: "admin",
+        pw: "123"
     }
     
     var allUsers = [admin];
+    // Lösche den "admin"
+    allUsers = allUsers.filter(user => user.name !== "admin");
 
-    // Weitere Benutzer hinzufügen
-    const user1 = {
-        name: "Benutzer1",
-        pw: "passwort1"
-    };
-    const user2 = {
-        name: "Benutzer2",
-        pw: "passwort2"
-    };
-    const user3 = {
-        name: "Benutzer3",
-        pw: "passwort3"
-    };
-
-    allUsers.push(user1, user2, user3);
-
-    // Admin mit Passwort 123 löschen
-    for (var i = 0; i < allUsers.length; i++) {}
-        if (allUsers[i].name === "admin" && allUsers[i].pw === "123") {
-            allUsers.splice(i, 1);
+    // Füge neue Benutzer hinzu
+    const usersToAdd = [ "Jonathan","Christoph", "Bartek", "Mathias"];
+    usersToAdd.forEach(user => {
+        allUsers.push({
+            name: user,
+            pw: "123" // Passwort kann an die Bedürfnisse angepasst werden
+        });
+    });
 
     return allUsers;
 }
@@ -50,7 +40,15 @@ function login(){
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
-    allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    const allUsers = makeUsers();
+    
+    for(let i = 0; i < allUsers.length; i++){
+        const user = allUsers[i];
+        
+        if(user.name === username && user.pw === password){
+            return true; // Benutzername und Passwort sind gültig
+        }
+    }
+    alert("Falsche Kombination")
+    return false; // Benutzername und/oder Passwort sind ungültig
 }
