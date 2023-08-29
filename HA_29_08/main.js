@@ -2,7 +2,29 @@
 
 
 function makeUsers() {
-    // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
+    // Erstelle 3 Benutzer und füge sie in das Array allUsers ein
+    const user1 = {
+        name: "Nummer1",
+        pw: "12345"
+    };
+
+    const user2 = {
+        name: "Nummer2",
+        pw: "12345"
+    };
+
+    const user3 = {
+        name: "Nummer3",
+        pw: "12345"
+    };
+
+    var allUsers = [user1, user2, user3];
+
+    // Entferne den Admin-Benutzer mit Passwort "123"
+    allUsers = allUsers.filter(user => !(user.name === "admin" && user.pw === "123"));
+
+    return allUsers;
+}// TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const admin = {
         name: "admin",
         pw: "123"
@@ -11,8 +33,8 @@ function makeUsers() {
     var allUsers = [admin];
 
 
-    return allUsers;
-}
+    return allUrs;
+
 
 
 // Die Funktion login wird vom HTML Dokument aus aufgerufen, sobald der login Button gedrückt wird
