@@ -3,15 +3,17 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Title</title>
+  <title>Users</title>
   <script src="main.js"></script>
   
 </head>
 
 <body id="body">
- <input type="text" name="username" value="" placeholder="Username"></input>
- <input type="password" name="password" value="" placeholder="Passwort"></input>
- <button onclick="login()">Login</button>
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username" value="" placeholder="Enter your Username">
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" value="" placeholder="Enter your Password">
+  <button onclick="login()">Login</button>
 </body>
 
 </html>

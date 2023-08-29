@@ -21,7 +21,6 @@ function makeUsers() {
 
     //Adding all 3 new users to the allUsers array    
     var allUsers = [user1, user2, user3];
-
     return allUsers;
 }
 
@@ -40,8 +39,19 @@ function login(){
 
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
-function validLogin(username, password){
-    allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
-}
+function validLogin(username, password) {
+    const allUsers = makeUsers(); 
+    
+    // Filter out users with corresponding usernames
+    const filteredUsers = allUsers.filter(user => user.name === username);
+    
+    // Check if any of the filtered users have matching passwords
+    return filteredUsers.some(user => user.pw === password);
+    }
+
+    //Looping through allUsers array to find a matching user
+    for (let i = 0; i < allUsers.length; i++){
+        const user=allUsers[i];
+        if (user.name === username && user.pw === password)
+        return true;
+    }
