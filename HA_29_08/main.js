@@ -13,13 +13,12 @@ function makeUsers() {
         pw: "456"
     }
 
-    const dimi = {
-        name: "dimi",
+    const dennis = {
+        name: "dennis",
         pw: "789"
     }
 
-    const
-    var allUsers = [abi, rico, dimi];
+    var allUsers = [abi, rico, dennis];
 
 
     return allUsers;
@@ -28,6 +27,13 @@ function makeUsers() {
 
 // Die Funktion login wird vom HTML Dokument aus aufgerufen, sobald der login Button gedrückt wird
 function login(){
+
+    var loginForm = `
+    <input type="text" name="username" value="" placeholder="Username"></input>
+    <input type="password" name="password" value="" placeholder="Passwort"></input>
+    <button onclick="login()">Login</button>    
+    `;
+    
     username = document.getElementsByName("username")[0].value;
     password = document.getElementsByName("password")[0].value;
 
@@ -35,6 +41,11 @@ function login(){
     if (validLogin(username, password)){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
     }
+
+    else {
+        document.getElementById("body").innerHTML = loginForm; // Zeige das Login-Formular erneut an        
+        alert("Password or Username incorrect, please try again!");     }
+
     return undefined;
 }
 
@@ -43,5 +54,14 @@ function login(){
 function validLogin(username, password){
     allUsers = makeUsers();
     // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    for (let i=0;i<allUsers.length;i++){
+        const user = allUsers[i];
+
+    if (user.name === username) {
+        if(user.pw === password){
+            return true;
+        }
+    }
+}
+return false;
 }
