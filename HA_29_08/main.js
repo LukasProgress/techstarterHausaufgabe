@@ -26,7 +26,7 @@ function login(){
     password = document.getElementsByName("password")[0].value;
 
     // Nachdem username und Passwort ausgelesen werden, wird die Validität überprüft.
-    // Passt diese, verändern wir den HTML-Code von "body"
+    // Passt diese, verändert es den HTML-Code von "body"
     if (validLogin(username, password)){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
     } else {
