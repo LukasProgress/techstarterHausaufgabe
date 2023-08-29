@@ -35,7 +35,6 @@ function validLogin(username, password){
     return true
 }
 function validLogin(username, password) {
-    // Replace this with your actual validation logic
     if (username === "ingo" && password === "123") {
         return true;
     } else {
