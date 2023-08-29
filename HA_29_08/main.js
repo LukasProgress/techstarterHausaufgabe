@@ -56,3 +56,11 @@ function validLogin(username, password){
 
     return false; // Invalid login
 }
+const inputUsername = "user1";
+const inputPassword = "wrongpass";
+
+if (validLogin(inputUsername, inputPassword)) {
+    console.log("Login erfolgreich");
+} else {
+    console.log("Login fehlgeschlagen, prüfe deine Einloggdaten.");
+}
