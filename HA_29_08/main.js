@@ -24,14 +24,22 @@ function makeUsers() {
 
 // Die Funktion login wird vom HTML Dokument aus aufgerufen, sobald der login Button gedrückt wird
 function login(){
+    var loginForm = `
+        <input type="text" name="username" value="" placeholder="Username"></input>
+        <input type="password" name="password" value="" placeholder="Passwort"></input>
+        <button onclick="login()">Login</button>
+    `;
+    
     username = document.getElementsByName("username")[0].value;
     password = document.getElementsByName("password")[0].value;
 
-    //Nachdem username und Passwort ausgelesen werden, wird die validität überprüft. Passt diese, verändern wir den HTML code von "body"
+    // Nachdem Benutzername und Passwort ausgelesen wurden, wird die Validität überprüft. Passt diese, verändern wir den HTML-Code von "body"
     if (validLogin(username, password)){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
+    } else {
+        document.getElementById("body").innerHTML = loginForm; // Zeige das Login-Formular erneut an
     }
-    document.write("Das Passwort oder der Username ist falsch");
+    
     return undefined;
 }
 
