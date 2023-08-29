@@ -38,10 +38,12 @@ function login(){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
     } else {
         document.getElementById("body").innerHTML = loginForm; // Zeige das Login-Formular erneut an
+        alert("wrong username or password!!"); 
     }
     
     return undefined;
 }
+
 
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
