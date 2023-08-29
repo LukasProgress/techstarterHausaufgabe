@@ -1,14 +1,29 @@
+
+
 //LOGIN SCRIPT
 
 
 function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
-    const admin = {
-        name: "admin",
-        pw: "123"
-    }
+   
+    const user1 = {
+        name: "user1",
+        pw: "pass1"
+    };
+
+    const user2 = {
+        name: "user2",
+        pw: "pass2"
+    };
+
+    const user3 = {
+        name: "user3",
+        pw: "pass3"
+    };
+
     
-    var allUsers = [admin];
+    
+    var allUsers = [user1, user2,user3];
 
 
     return allUsers;
@@ -29,8 +44,16 @@ function login(){
 
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
+
+
 function validLogin(username, password){
+   
     allUsers = makeUsers();
+
     // TODO: 3. Programmiere die Funktion validLogin
-    return true
-}
+    for (let i = 0; i < allUsers.length; i++) { // in dem fall 3
+        if (allUsers[i].name === username && allUsers[i].pw === password) {
+            return true; // Anmeldedaten stimmen überein
+        }
+    }
+    return false; // Anmeldedaten stimmen NICHT überein
