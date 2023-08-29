@@ -9,31 +9,17 @@ function makeUsers() {
     }
     
     var allUsers = [admin];
+    // Lösche den "admin"
+    allUsers = allUsers.filter(user => user.name !== "admin");
 
-    // Weitere Benutzer hinzufügen
-    const user1 = {
-        name: "Benutzer1",
-        pw: "passwort1"
-    };
-    const user2 = {
-        name: "Benutzer2",
-        pw: "passwort2"
-    };
-    const user3 = {
-        name: "Benutzer3",
-        pw: "passwort3"
-    };
-
-    allUsers.push(user1, user2, user3);
-
-    // Admin mit Passwort 123 löschen
-    for (var i = 0; i < allUsers.length; i++) {
-        if (allUsers[i].name === "admin" && allUsers[i].pw === "123") {
-            allUsers.splice(i, 1);
-            break;
-        }
-    }
-
+    // Füge neue Benutzer hinzu
+    const usersToAdd = ["Mathias", "Christoph", "Jonathan", "Bartek"];
+    usersToAdd.forEach(user => {
+        allUsers.push({
+            name: user,
+            pw: "123" // Passwort kann an die Bedürfnisse angepasst werden
+        });
+    });
 
     return allUsers;
 }
@@ -54,8 +40,11 @@ function login(){
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
-    allUsers = makeUsers();
+    const allUsers = makeUsers();
+   
     for (var i = 0; i < allUsers.length; i++) {
+        const user = allUsers[1];
+        
         if (allUsers[i].name === username && allUsers[i].pw === password) {
             return true;
         }
