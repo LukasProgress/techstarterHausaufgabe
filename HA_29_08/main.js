@@ -55,6 +55,11 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    for (var i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].name === username && allUsers[i].pw === password) {
+            return true;
+        }
+    }
+    alert("Ungültige Kombination von Benutzename und Passwort")
+    return false;
 }
