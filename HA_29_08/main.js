@@ -1,6 +1,5 @@
 //LOGIN SCRIPT
 
-
 function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const user0 = {
@@ -18,27 +17,35 @@ function makeUsers() {
     };
     var allUsers = [user0, user1, user2];
 
-
     return allUsers;
 }
-
 
 // Die Funktion login wird vom HTML Dokument aus aufgerufen, sobald der login Button gedrückt wird
 function login(){
     username = document.getElementsByName("username")[0].value;
     password = document.getElementsByName("password")[0].value;
 
-    //Nachdem username und Passwort ausgelesen werden, wird die validität überprüft. Passt diese, verändern wir den HTML code von "body"
+    // Nachdem username und Passwort ausgelesen werden, wird die Validität überprüft.
+    // Passt diese, verändern wir den HTML-Code von "body"
     if (validLogin(username, password)){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
+    } else {
+        alert("Invalid username or password");
     }
     return undefined;
 }
 
-// Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
+// Die Funktion validLogin wird ein gegebenes username-password Paar nach Validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    
+    // Durchlaufe das allUsers-Array, um nach übereinstimmenden Anmeldeinformationen zu suchen
+    for (let i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].name === username && allUsers[i].pw === password) {
+            return true; // Rückgabe true, wenn gültige Anmeldeinformationen gefunden wurden
+        }
+    }
+    
+    return false; // Rückgabe false, wenn keine gültigen Anmeldeinformationen gefunden wurden
 }
