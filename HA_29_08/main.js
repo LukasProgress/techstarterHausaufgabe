@@ -4,7 +4,7 @@
 function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const admin = {
-        name: "admin",
+        name: "ingo",
         pw: "123"
     }
     
@@ -33,4 +33,12 @@ function validLogin(username, password){
     allUsers = makeUsers();
     // TODO: 3. Programmiere die Funktion validLogin
     return true
+}
+function validLogin(username, password) {
+    // Replace this with your actual validation logic
+    if (username === "ingo" && password === "123") {
+        return true;
+    } else {
+        return false;
+    }
 }
