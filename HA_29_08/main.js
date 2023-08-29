@@ -10,6 +10,30 @@ function makeUsers() {
     
     var allUsers = [admin];
 
+    // Weitere Benutzer hinzufügen
+    const user1 = {
+        name: "Benutzer1",
+        pw: "passwort1"
+    };
+    const user2 = {
+        name: "Benutzer2",
+        pw: "passwort2"
+    };
+    const user3 = {
+        name: "Benutzer3",
+        pw: "passwort3"
+    };
+
+    allUsers.push(user1, user2, user3);
+
+    // Admin mit Passwort 123 löschen
+    for (var i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].name === "admin" && allUsers[i].pw === "123") {
+            allUsers.splice(i, 1);
+            break;
+        }
+    }
+
 
     return allUsers;
 }
