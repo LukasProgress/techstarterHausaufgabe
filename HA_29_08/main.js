@@ -39,5 +39,10 @@ function login(){
 function validLogin(username, password){
     allUsers = makeUsers();
     // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    for (let i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].username === username && allUsers[i].password === password) {
+            return true;
+        }
+    }
+    return false;
 }
