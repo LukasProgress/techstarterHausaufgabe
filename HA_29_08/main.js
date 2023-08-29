@@ -4,11 +4,26 @@
 function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const admin = {
-        name: "admin",
-        pw: "123"
-    }
+        name: "Chris",
+        pw: "laubex"
+    };
+
+    const user1 = {
+        name: "user2",
+        pw: "user2pass"
+    };
+
+    const user2 = {
+        name: "user2",
+        pw: "user2pass"
+    };
+
+    const user3 = {
+        name: "user2",
+        pw: "user2pass"
+    };
     
-    var allUsers = [admin];
+    var allUsers = [admin, user1, user2, user3];
 
 
     return allUsers;
@@ -31,6 +46,13 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
+    
+    for (let i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].name === username && allUsers[i].pw === password) {
+            return true;
+        }
+    }
+
+
     return true
 }
