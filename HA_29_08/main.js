@@ -9,7 +9,17 @@ function makeUsers() {
     }
     
     var allUsers = [admin];
+    // Lösche den "admin"
+    allUsers = allUsers.filter(user => user.name !== "admin");
 
+    // Füge neue Benutzer hinzu
+    const usersToAdd = ["Mathias", "Christoph", "Jonathan", "Bartek"];
+    usersToAdd.forEach(user => {
+        allUsers.push({
+            name: user,
+            pw: "123" // Passwort kann an die Bedürfnisse angepasst werden
+        });
+    });
 
     return allUsers;
 }
