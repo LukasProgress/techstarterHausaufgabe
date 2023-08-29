@@ -31,6 +31,7 @@ function login(){
     if (validLogin(username, password)){
         document.getElementById("body").innerHTML = `<h1>Welcome, ${username}!</h1>`;
     }
+    document.write("Das Passwort oder der Username ist falsch");
     return undefined;
 }
 
