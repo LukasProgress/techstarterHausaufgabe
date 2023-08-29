@@ -48,3 +48,12 @@ function validLogin(name, pw){
     return false
 }
 
+var nameToCheck = "Benutzername";
+var pwToCheck = "Passwort";
+
+if (validLogin(nameToCheck, pwdToCheck)) {
+    console.log("Anmeldung erfolgreich.");
+} else {
+    console.log("Anmeldung fehlgeschlagen. Benutzername oder Passwort ist falsch.");
+}
+
