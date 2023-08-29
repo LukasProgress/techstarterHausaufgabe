@@ -40,7 +40,15 @@ function login(){
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
-    allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    const allUsers = makeUsers();
+    
+    for(let i = 0; i < allUsers.length; i++){
+        const user = allUsers[i];
+        
+        if(user.name === username && user.pw === password){
+            return true; // Benutzername und Passwort sind gültig
+        }
+    }
+    alert("Ungültige Eingabe")
+    return false; // Benutzername und/oder Passwort sind ungültig
 }
