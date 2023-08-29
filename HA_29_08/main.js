@@ -3,12 +3,20 @@
 
 function makeUsers() {
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
-    const admin = {
-        name: "admin",
+    const user0 = {
+        name: "user0",
         pw: "123"
     }
-    
-    var allUsers = [admin];
+    const user1 = {
+        name: "user1",
+        pw: "345"
+    };
+
+    const user2 = {
+        name: "user2",
+        pw: "567"
+    };
+    var allUsers = [user0, user1, user2];
 
 
     return allUsers;
