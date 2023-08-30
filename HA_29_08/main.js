@@ -44,15 +44,14 @@ function login(){
 
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
-function validLogin(username, password){
-    allUsers = makeUsers();
-    
+function validLogin(username, password) {
+    const allUsers = makeUsers();
+
     for (let i = 0; i < allUsers.length; i++) {
         if (allUsers[i].name === username && allUsers[i].pw === password) {
             return true;
         }
     }
 
-
-    return true
+    return false; // Return false if no matching user is found
 }
