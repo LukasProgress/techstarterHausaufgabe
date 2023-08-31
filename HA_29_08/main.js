@@ -2,7 +2,6 @@
 
 // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
 function makeUsers() {
-    
     // eigene Benutzer
     const user1 = {
         name: "user1",
@@ -26,33 +25,54 @@ function makeUsers() {
 
     // alle Benutzer im Array
     const allUsers = [user1, user2, user3, user4];
+}
+
+// LOGIN SCRIPT
+
+// TODO: 2. Lösche den standard user und Füge deine eigenen User ein:
+function makeUsers() {
+    const admin = {
+        name: "admin",
+        pw: "123"
+    };
+    
+    const user1 = {
+        name: "user1",
+        pw: "pass1"
+    };
+
+    const user2 = {
+        name: "user2",
+        pw: "pass2"
+    };
+
+    // Füge weitere Benutzer hinzu, falls nötig
+
+    const allUsers = [admin, user1, user2]; // Füge die neuen Benutzer hinzu
 
     return allUsers;
 }
 
+// TODO: 3. Programmiere die Funktion validLogin
 // Die Funktion validLogin wird ein gegebenes username-password Paar auf Validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
-
-
-    // TODO: 3. Programmiere die Funktion validLogin
-    // Durchlaufe alle Benutzer in allUsers
-    function validLogin(username, password) {
-        console.log("Verifiziere:", username, password);
-        const allUsers = makeUsers();
+function validLogin(username, password) {
+    console.log("Verifiziere:", username, password);
+    const allUsers = makeUsers();
     
-        for (let i = 0; i < allUsers.length; i++) {
-            const user = allUsers[i];
-            console.log("Check:", user.name, user.pw);
+    for (let i = 0; i < allUsers.length; i++) {
+        const user = allUsers[i];
+        console.log("Check:", user.name, user.pw);
     
-            if (user.name === username && user.pw === password) {
-                console.log("Login OK");
-                return true; // Gültige Anmeldedaten
-            }
+        if (user.name === username && user.pw === password) {
+            console.log("Login OK");
+            return true; // Gültige Anmeldedaten
         }
-    
-        console.log("Login nicht ok");
-        return false; // Ungültige Anmeldedaten
     }
+    
+    console.log("Login nicht ok");
+    return false; // Ungültige Anmeldedaten
+}
 
 // Die Funktion login wird vom HTML Dokument aus aufgerufen, sobald der Login-Button gedrückt wird
 function login() {
@@ -64,9 +84,17 @@ function login() {
 
     if (validLogin(username, password)) {
         console.log("Login OK");
-        document.getElementById("body").innerHTML = `<h1>Wilkommen, ${username} ! </h1>`;
+        document.getElementById("body").innerHTML = `<h1>Willkommen, ${username} ! </h1>`;
     } else {
         console.log("Login nicht ok");
     }
     return undefined;
+}
+
+// Die Funktion validLogin wird ein gegebenes username-password paar nach Validität überprüfen
+// Als Ergebnis muss validLogin einen Boolean zurückgeben!
+function validLogin(username, password){
+    allUsers = makeUsers();
+    // TODO: 3. Programmiere die Funktion validLogin
+    return true; // Hier sollte die Validitätsprüfung implementiert werden
 }
