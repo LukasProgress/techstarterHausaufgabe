@@ -43,6 +43,18 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
-    // TODO: 3. Programmiere die Funktion validLogin
-    return true
+    
+  for (let i = 0; i < allUsers.length; i++) {
+    
+    if (allUsers[i].username === username) {
+      
+      if (allUsers[i].password === password) {
+        // Login ist erfolgreich
+        return true;
+      }
+    }
+  }
+
+  // Login ist nicht erfolgreich
+  return false;
 }
