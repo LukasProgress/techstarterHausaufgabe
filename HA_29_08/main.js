@@ -58,3 +58,7 @@ function validLogin(username, password){
   // Login ist nicht erfolgreich
   return false;
 }
+const isLoginValid = validLogin("user1", "123456");
+if (!isLoginValid) {
+    alert("Benutzername oder Passwort für den Benutzer flasch");
+} 
