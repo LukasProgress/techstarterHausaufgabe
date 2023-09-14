@@ -31,9 +31,12 @@ class Employee {
 // OBJECT INSTANCES
 const bigMoneyCorp = new Company("Big Money Corporations");
 
+
 let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
+let it = new Department(bigMoneyCorp, "IT", "Lukas Luxusmensch" )
+
 //TODO: 2. Füge ein weiteres Department hinzu
 
 //Wir speichern alle angestellten in einem einzigen Array:
@@ -45,6 +48,15 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
+allEmployees.push(new Employee(hr, "Bartek Bubusan", 60000));
+allEmployees.push(new Employee(hr, "Abi Abseitsfahne", 62000));
+allEmployees.push(new Employee(hr, "Dennis Doorbell", 30000));
+allEmployees.push(new Employee(it, "Enrico Eberhart", 32000));
+allEmployees.push(new Employee(it, "Cristoph Cramling", 75000));
+allEmployees.push(new Employee(it, "Lukas Luxusmensch", 4000000));
+allEmployees.push(new Employee(marketing, "Dimi Duschkopf", 70000));
+allEmployees.push(new Employee(marketing, "Chris Chross", 61000));
+allEmployees.push(new Employee(marketing, "Sarah Sagtnichviel", 45000));
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 //==============================================================================
 // FUNCTIONS
