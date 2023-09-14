@@ -74,11 +74,15 @@ allEmployees.push(new Employee(it,"Abahbdi Hamidad",95000));
 //main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
 function main(){
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
+    allEmployees.map(employee => console.log(employee.name));
 
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
+    allEmployees.filter(employee => employee.department === hr)
+                .map(employee => console.log(employee.name));
 
     //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
-    
+    allEmployees.filter(employee => employee.salary >= 35000)
+                .map(employee => console.log(employee.name));
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
 
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
