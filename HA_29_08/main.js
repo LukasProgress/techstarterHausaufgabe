@@ -2,6 +2,7 @@
 
 
 function makeUsers() {
+<<<<<<< HEAD
     const employee1 = {
         name: "John",
         pw: "123"
@@ -18,6 +19,28 @@ function makeUsers() {
     }
 
     var allUsers = [employee1, employee2, employee3];
+=======
+ 
+    
+    var allUsers = [admin];
+    const user1 = {
+        name: "Gagarin",
+        pw: "Woschod1"
+      };
+      const user2 = {
+        name: "Tereschkowa",
+        pw: "Woschod2"
+      };
+      const user3 = {
+        name: "Leonov",
+        pw: "Woschod3"
+      };
+    
+      allUsers.push(user1);
+      allUsers.push(user2);
+      allUsers.push(user3);
+    
+>>>>>>> cccc3f6ecc6c5f6371360e7898ed481b7f4ba417
 
     return allUsers;
 }
@@ -39,6 +62,7 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(name, pw){
     allUsers = makeUsers();
+<<<<<<< HEAD
 
     for (var i = 0; i < allUsers.length; i++) {
         if (allUsers[i].name === name && allUsers[i].pw === pw) {
@@ -57,3 +81,24 @@ if (validLogin(nameToCheck, pwdToCheck)) {
     console.log("Anmeldung fehlgeschlagen. Benutzername oder Passwort ist falsch.");
 }
 
+=======
+    
+  for (let i = 0; i < allUsers.length; i++) {
+    
+    if (allUsers[i].username === username) {
+      
+      if (allUsers[i].password === password) {
+        // Login ist erfolgreich
+        return true;
+      }
+    }
+  }
+
+  // Login ist nicht erfolgreich
+  return false;
+}
+const isLoginValid = validLogin("user1", "123456");
+if (!isLoginValid) {
+    alert("Benutzername oder Passwort für den Benutzer flasch");
+} 
+>>>>>>> cccc3f6ecc6c5f6371360e7898ed481b7f4ba417
