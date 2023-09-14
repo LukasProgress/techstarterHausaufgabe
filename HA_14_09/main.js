@@ -16,7 +16,21 @@ class Department {
     }
 }
 
+class Department {
+    constructor(company, name, boss){
+        this.company = company;
+        this.name = name;
+        this.boss = boss;
+    }
+}
 
+class Employee {
+    constructor(company, name, salary){
+        this.company = company;
+        this.name = name;
+        this.salary = salary;
+    }
+}
 
 
 
