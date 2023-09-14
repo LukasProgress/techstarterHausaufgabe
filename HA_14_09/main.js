@@ -105,8 +105,10 @@ function main(){
 
     //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
     doubleBossIncome(department);
+
+
     //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
-    
+    averageIncome(department);
 }
 
 main();
@@ -169,4 +171,23 @@ function doubleBossIncome(departmentName) {
     } else {
         console.log(`Boss für ${departmentName} wurde nicht gefunden.`);
     }
+}
+
+function averageIncome(departmentName) {
+    const department = [finance, hr, marketing, it].find(dept => dept.name ===departmentName);
+
+    if (!department) {
+        console.log(`Department ${departmentName} wurde nicht gefunden.`)
+        return;
+    }
+
+    const employessInDepartment = allEmployees.filter(employee => employee.department === department);
+
+    const totalSalary = employessInDepartment.map(employee => employee.salary)
+                                             .reduce((acc, salary) => acc + salary, 0);
+    const avgSalary = totalSalary / employessInDepartment.length;
+
+    console.log(`Das Durschnittsgehalt der Angestellten in ${departmentName} ist ${avgSalary}`);
+    return avgSalary;
+
 }
