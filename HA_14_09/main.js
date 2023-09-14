@@ -81,6 +81,9 @@ allEmployees.push(new Employee(it, "Clark Kent", 50000));
 function main(){
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
 
+    let listAllEmployees = allEmployees.map(employee => employee.name);
+    console.log(listAllEmployees);
+
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
 
     //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
