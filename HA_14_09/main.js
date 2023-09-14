@@ -103,14 +103,43 @@ function main(){
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
     //         eine Gehaltserhöhung von 4000 im Jahr zu geben
 
-    function raiseIncome(department, amount){
-
-    }
+    function raiseIncome(department, amount) {
+        department.company.employees.forEach(employee => {
+          if (employee.department === department && employee !== department.boss) {
+            employee.salary += amount;
+          }
+        });
+      }
+        const hrDepartment = hr;
+        raiseIncome(hrDepartment, 4000);
 
     //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
 
+    function doubleBossIncome(department) {
+        const boss = department.boss;
+        if (boss) {
+          boss.salary *= 2;
+        }
+      }
+      
+      const hr = hr;
+      doubleBossIncome(hr);
+
+      console.log(`Aktualisiertes Gehalt des Chefs von Human Resources (${hr.boss.name}): ${hr.boss.salary}`);
+
     //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
+    function averageIncome(it) {
+        const employeesItDepartment = it.company.employees.filter(employee => employee.it === it);
+        const totalSalary = employeesItDepartment.reduce((sum, employee) => sum + employee.salary, 0);
+        const average = totalSalary / employeesItDepartment.length;
+        return average;
+      }
     
+      const itDepartment = it;
+      const avgIncomeIT = averageIncome(itDepartment);
+      
+      console.log(`Durchschnittsgehalt in der Abteilung IT inklusive Chef: ${avgIncomeHR}`);
+      
 }
 
 main();
