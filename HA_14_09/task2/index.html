@@ -12,12 +12,62 @@
         <label for="number2">Zweite Zahl:</label>
         <input type="number" id="number2" name="number2"><br><br>
 
-        <input type="button" value="+">
-        <input type="button" value="-">
-        <input type="button" value="*">
-        <input type="button" value="/"><br><br>
+        <input type="button" value="+" id="add">
+        <input type="button" value="-" id="subtract">
+        <input type="button" value="*" id="multiply">
+        <input type="button" value="/" id="divide"><br><br>
     </form>
-    <h4>Ergebnis:</h6>
-    <h6></h6>
+    <h4>Ergebnis:</h4>
+    <h6 id="result"></h6>
+
+    <script>
+        // Funktion, um die Berechnung durchzuführen
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            let result;
+
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = "Division durch Null nicht möglich";
+                    }
+                    break;
+                default:
+                    result = "Ungültige Operation";
+                    break;
+            }
+
+            document.getElementById('result').textContent = "Ergebnis: " + result;
+        }
+
+        // Event-Listener für die Buttons
+        document.getElementById('add').addEventListener('click', function () {
+            calculate('+');
+        });
+
+        document.getElementById('subtract').addEventListener('click', function () {
+            calculate('-');
+        });
+
+        document.getElementById('multiply').addEventListener('click', function () {
+            calculate('*');
+        });
+
+        document.getElementById('divide').addEventListener('click', function () {
+            calculate('/');
+        });
+    </script>
 </body>
 </html>
