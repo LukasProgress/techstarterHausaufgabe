@@ -9,14 +9,6 @@ class Company {
 }
 
 class Department {
-    constructor(company, name, manager){
-        this.company = company;
-        this.name = name;
-        this.manager = manager;
-    }
-}
-
-class Department {
     constructor(company, name, boss){
         this.company = company;
         this.name = name;
@@ -25,8 +17,8 @@ class Department {
 }
 
 class Employee {
-    constructor(company, name, salary){
-        this.company = company;
+    constructor(department, name, salary){
+        this.department = department;
         this.name = name;
         this.salary = salary;
     }
@@ -60,21 +52,43 @@ allEmployees.push(new Employee(hr, "Brook", 45000))
 allEmployees.push(new Employee(marketing, "Tony Chopper", 55000))
 allEmployees.push(new Employee(marketing, "Lysop", 50000))
 allEmployees.push(new Employee(marketing, "Shanks", 51000))
-allEmployees.push(new Employee(sales, "Monkey D. Ruffy",111000))
-allEmployees.push(new Employee(sales, "Lorenor Zorro",105000))
-allEmployees.push(new Employee(sales, "Sanji",100000))
+allEmployees.push(new Employee(sales, "Monkey D. Ruffy", 111000))
+allEmployees.push(new Employee(sales, "Lorenor Zorro", 105000))
+allEmployees.push(new Employee(sales, "Sanji", 100000))
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 //==============================================================================
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
+function getBoss(employee) {
+    return employee.department.boss
+}
 
 //TODO: 5. Funktion raiseIncome
+function raiseIncome(department, amount) {
+    allEmployees.forEach(employee => {
+        if (employee.department === department && employee.name !== department.boss) {
+            employee.salary += amount
+        }
+    })
+}
 
 //TODO: 6. doubleBossIncome
-
+function doubleBossIncome(department) {
+    const boss = allEmployees.find(employee => employee.department === department && employee.name === department.boss)
+    if (boss) {
+        boss.salary *= 2
+    }
+}
 //TODO: 7. averageIncome
-
+function averageIncome(department) {
+    const departmentEmployees = allEmployees.filter(employee => employee.department === department);
+    if (departmentEmployees.length === 0) {
+        return 0
+    }
+    const totalSalary = departmentEmployees.reduce((acc, employee) => acc + employee.salary, 0)
+    return totalSalary / departmentEmployees.length
+}
 
 
 
@@ -82,21 +96,38 @@ allEmployees.push(new Employee(sales, "Sanji",100000))
 //==============================================================================
 //main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
 function main(){
-    //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
-
-    //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
-
-    //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
+    console.log("----------------------------------")
+    console.log("Namen aller Angestellten:")
+    console.log(allEmployees.map(employee => employee.name).join(", "))
     
-    //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
-
-    //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
-    //         eine Gehaltserhöhung von 4000 im Jahr zu geben
-
-    //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
-
-    //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
+    console.log("----------------------------------")
+    console.log("Namen aller Angestellten in der Abteilung 'Human Ressources':")
+    const hrNames = allEmployees.filter(employee => employee.department.name === 'Human Ressources').map(employee => employee.name)
+    console.log(hrNames.join(", "))
     
+    console.log("----------------------------------")
+    console.log("Namen aller Angestellten mit einem Jahresgehalt von mehr als 35.000:")
+    const highEarners = allEmployees.filter(employee => employee.salary > 35000).map(employee => employee.name)
+    console.log(highEarners.join(", "))
+    
+    console.log("----------------------------------")
+    console.log("Chef von Andreas Armschlucker:")
+    console.log(getBoss(allEmployees.find(employee => employee.name === "Andreas Armschlucker")))
+
+    console.log("----------------------------------")
+    console.log("Gehaltserhöhung um 4000 für alle Angestellten der HR-Abteilung, außer dem Chef...")
+    raiseIncome(hr, 4000)
+    
+    console.log("----------------------------------")
+    console.log("Verdopplung des Gehalts für den HR-Chef...")
+    doubleBossIncome(hr)
+    
+    console.log("----------------------------------")
+    console.log("Durchschnittliches Einkommen in der HR-Abteilung:")
+    const avgIncome = averageIncome(hr)
+    console.log(avgIncome)
+
+    console.log("----------------------------------")
 }
 
-main();
+main()
