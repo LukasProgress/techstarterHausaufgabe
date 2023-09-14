@@ -1,4 +1,5 @@
 //==============================================================================
+// KI-Koproduktion!! Nicht Bewerten, wenn möglich unterschiede erklären <3
 // CLASSES
 
 //TODO: 1. Erstelle die beiden Klassen "Department" und "Employee"
@@ -7,6 +8,7 @@ class Company {
     this.name = name;
   }
 }
+
 class Department {
   constructor(company, name, boss) {
     this.company = company;
@@ -58,7 +60,6 @@ allEmployees.push(new Employee(it, "Ingo Bnternet", 250002));
 allEmployees.push(new Employee(it, "Ingo Cnternet", 250001));
 //==============================================================================
 // FUNCTIONS
-
 //TODO: 4. Funktion getBoss
 function getBoss(employeeName) {
   const employee = allEmployees.find((employee) => employee.name === employeeName);
@@ -104,7 +105,6 @@ function averageIncome(departmentName) {
 
 //=====================================================================================================================
 //main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
-
 function main() {
   //TODO: 3. Gib die Namen aller Angestellten auf der Konsole aus:
   const employeeNames = allEmployees.map((employee) => employee.name);

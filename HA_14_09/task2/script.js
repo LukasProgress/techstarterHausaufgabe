@@ -1,15 +1,27 @@
-function add(a, b){
-    return a + b
+function addNumbers() {
+    const number1 = parseFloat(document.getElementById('number1').value);
+    const number2 = parseFloat(document.getElementById('number2').value);
+    const result = number1 + number2;
+    document.getElementById('result').textContent = `Ergebnis: ${result}`;
 }
 
-function sub(a, b){
-    return a - b
+function subtractNumbers() {
+    const number1 = parseFloat(document.getElementById('number1').value);
+    const number2 = parseFloat(document.getElementById('number2').value);
+    const result = number1 - number2;
+    document.getElementById('result').textContent = `Ergebnis: ${result}`;
 }
 
-function mul(a, b){
-    return a * b
+function multiplyNumbers() {
+    const number1 = parseFloat(document.getElementById('number1').value);
+    const number2 = parseFloat(document.getElementById('number2').value);
+    const result = number1 * number2;
+    document.getElementById('result').textContent = `Ergebnis: ${result}`;
 }
 
-function div(a, b){
-    return a / b
+function divideNumbers() {
+    const number1 = parseFloat(document.getElementById('number1').value);
+    const number2 = parseFloat(document.getElementById('number2').value);
+    const result = number1 / number2;
+    document.getElementById('result').textContent = `Ergebnis: ${result}`;
 }
