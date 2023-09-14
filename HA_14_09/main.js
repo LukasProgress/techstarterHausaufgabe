@@ -62,35 +62,75 @@ allEmployees.push(new Employee(it, "Stefan Klose", 8000000));
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
+function getBoss(x) {
+    const chef = allEmployees.filter(employee => employee.name === x)
+    return chef
+}
+//console.log(getBoss("Andreas Armschlucker"))
 
 //TODO: 5. Funktion raiseIncome
+function raiseIncome(department, amount) {
+    const whogetmoremoney = allEmployees.filter(employee => employee.department === department && employee.department.boss !== employee.name)
+   
 
+    for (const employee of whogetmoremoney) {
+        employee.salary += amount
+    }
+}
+raiseIncome(hr, 4000)
+//console.log(allEmployees.filter(employee => employee.department === hr))
 //TODO: 6. doubleBossIncome
+function doubleBossIncome(department){
+    const doublemoney = allEmployees.filter(employee => employee.department === department && employee.department.boss === employee.name)
 
+    for (const employee of doublemoney) {
+        employee.salary *= 2
+    }
+}
+doubleBossIncome(hr)
+//console.log(allEmployees.filter(employee => employee.department === hr))
 //TODO: 7. averageIncome
-
-
+function averageIncome(department) {
+    const personen = allEmployees.filter(employee => employee.department === department)
+    const zusammen = personen.reduce((sum, employee) => sum + employee.salary, 0)
+    const geteilt = zusammen / personen.length
+    return geteilt
+}
+const durchschnittsgehalt = averageIncome(hr)
+//console.log(durchschnittsgehalt)
 
 
 
 //==============================================================================
 //main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
 function main(){
+
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
-
-    //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
-
-    //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
+    const employeeNames = allEmployees.map(employee => employee.name);
+    //console.log(employeeNames);
     
+    //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
+    const hrEmployees = allEmployees.filter(employee => employee.department)
+    const hrNames = hrEmployees.map(employee => employee.name)
+    //console.log(hrNames);
+    //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
+    const rich = allEmployees.filter(employee => employee.salary > 35000)
+    const richNames = rich.map(employee => employee.name)
+    //console.log(richNames)
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
-
+    console.log("hier kommt Aufgabe 4:")
+    console.log(getBoss("Andreas Armschlucker"))
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
     //         eine Gehaltserhöhung von 4000 im Jahr zu geben
-
+    console.log("Hier kommt Aufgabe 5:")
+    console.log(allEmployees.filter(employee => employee.department === hr))
     //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
-
+    console.log("Hier kommt Aufgabe 6:")
+    console.log(allEmployees.filter(employee => employee.department === hr && employee.department.boss === employee.name))
     //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
-    
+    console.log("Hier kommt Aufgabe 7:")
+    console.log(durchschnittsgehalt)
+
 }
 
 main();
