@@ -7,8 +7,20 @@ class Company {
         this.name = name;
     }
 }
-
-
+class Department {
+    constructor(company, name, boss){
+        this.company = company
+        this.name = name
+        this.boss = boss;
+    }
+}
+class Employee {
+    constructor(department, name, salery){
+        this.department = department
+        this.name = name
+        this.salery = salery;
+    }
+}
 
 
 
