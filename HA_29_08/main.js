@@ -44,7 +44,6 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
-<<<<<<< HEAD
     
   for (let i = 0; i < allUsers.length; i++) {
     
@@ -64,15 +63,3 @@ const isLoginValid = validLogin("user1", "123456");
 if (!isLoginValid) {
     alert("Benutzername oder Passwort für den Benutzer flasch");
 } 
-=======
-    // TODO: 3. Programmiere die Funktion validLogin
-    for (let i = 0;
-        i < allUsers.length; i++) {
-            if (allUsers[i].name === username && allUsers[i].pw === password){
-               return true;
-            }
-    }
-
-    return false;
-}
->>>>>>> 85aa7580aaa0b9be2dd9e27e2c662be38e8ce1c5
