@@ -31,10 +31,13 @@ class Employee {
 // OBJECT INSTANCES
 const bigMoneyCorp = new Company("Big Money Corporations");
 
+
 let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
-//TODO: 2. Füge ein weiteres Department hinzu
+
+//TODO: 2. Füge ein weiteres Department hinzu (eignes)
+let tech = new Department(bigmoneyCorp, "Tech", "Timour Miagol");
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -45,9 +48,68 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
+// FÜR Aufgabe 2  Chef der mehr verdient
+allEmployees.push(new Employee(tech, "Timour Miagol", 2000000))
+// ANGEllstellte des neuen departments
+allEmployees.push(new Employee(tech, "NPC1", 80000))
+allEmployees.push(new Employee(tech, "NPC2", 80000))
+allEmployees.push(new Employee(tech, "NPC3", 80000))
+// Neue engestellten für hr
+allEmployees.push(new Employee(hr, "hrNPC1", 70000))
+allEmployees.push(new Employee(hr, "hrNPC2", 60000))
+allEmployees.push(new Employee(hr, "hrNPC3", 65000))
+//neue angestellten für marketing
+allEmployees.push(new Employee(marketing, "marketingNPC1", 65000))
+allEmployees.push(new Employee(marketing, "marketingNPC2", 65000))
+allEmployees.push(new Employee(marketing, "marketingNPC3", 65000))
+
+
+
+
+
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 //==============================================================================
 // FUNCTIONS
+
+
+
+// + Mitarbeiter des Departments
+
+
+
+// 3 neue angestellte für HR
+
+
+
+
+
+// FUNCTIONS
+function getBoss(department) {
+    return department.boss;
+  }
+  
+  
+  
+  function raiseIncome(employee, amount) {
+    employee.salary = amount + employee.solary;
+  }
+  
+
+  
+  function doubleBossIncome(department) {
+    const boss = getBoss(department);
+    raiseIncome(boss, boss.salary);
+  }
+  
+  
+  function averageIncome(employees) {
+    let totalSalary = 0;
+    for (let employee of employees) {
+      totalSalary += employee.salary;
+    }
+    return totalSalary / employees.length;
+  }
+
 
 //TODO: 4. Funktion getBoss
 
