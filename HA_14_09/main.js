@@ -48,6 +48,8 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
+
+// TODO: 3. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 allEmployees.push(new Employee(verprasser, "Ahmet Clanmitgliedus", 123456789));
 allEmployees.push(new Employee(verprasser, "Anton Berta", 6500));
 allEmployees.push(new Employee(verprasser, "Horst Hrubesh", 5500));
@@ -59,11 +61,11 @@ allEmployees.push(new Employee(hr, "Arne Friedrich", 45000));
 allEmployees.push(new Employee(hr, "Christopher hinterm Lenz", 5000));
 allEmployees.push(new Employee(hr, "Arjen Robben", 7000));
 
-// TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 //==============================================================================
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
+
 
 //TODO: 5. Funktion raiseIncome
 
