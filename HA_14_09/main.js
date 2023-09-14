@@ -25,11 +25,6 @@ class Employee {
     }
 }
 
-
-
-
-
-
 //==============================================================================
 // OBJECT INSTANCES
 const bigMoneyCorp = new Company("Big Money Corporations");
@@ -37,7 +32,9 @@ const bigMoneyCorp = new Company("Big Money Corporations");
 let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
+
 //TODO: 2. Füge ein weiteres Department hinzu
+let it = new Department(bigMoneyCorp, "IT", "Ingo Internet");
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
