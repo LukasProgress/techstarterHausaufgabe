@@ -37,6 +37,8 @@ let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
 //TODO: 2. Füge ein weiteres Department hinzu
+let sales = new Department(bigMoneyCorp, "Sales", "Big Money");
+
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -50,6 +52,24 @@ allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 //==============================================================================
 // FUNCTIONS
+// Neues Department erstellen
+let development = new Department(bigMoneyCorp, "development", "Irena Gjorgijeva");
+
+// Chef für dein Department erstellen
+allEmployees.push(new Employee(deinDepartment, "Irena Gjorgijeva", 5000000)); // Der Chef verdient ein paar Millionen im Jahr
+
+// Angestellte zu "Human Ressources", "Marketing" und deinem eigenen Department hinzufügen
+hr.addEmployee(new Employee(hr, "Max Mustermann", 40000));
+hr.addEmployee(new Employee(hr, "Anna Schmidt", 38000));
+hr.addEmployee(new Employee(hr, "Eva Müller", 42000));
+
+marketing.addEmployee(new Employee(marketing, "David Brown", 38000));
+marketing.addEmployee(new Employee(marketing, "Sarah Lee", 39000));
+marketing.addEmployee(new Employee(marketing, "Julia Wilson", 40000));
+
+development.addEmployee(new Employee(development, "Maximilian Meier", 48000));
+development.addEmployee(new Employee(development, "Sophie Müller", 52000));
+development.addEmployee(new Employee(development, "Irena Gjorgijeva", 50000));
 
 //TODO: 4. Funktion getBoss
 
