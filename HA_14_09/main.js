@@ -45,7 +45,17 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
+allEmployees.push(new Employee(it, "Ingo Internet", 2500000));
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
+allEmployees.push(new Employee(hr, "Albrecht Basgeier", 350003));
+allEmployees.push(new Employee(hr, "Albrecht Casgeier", 350002));
+allEmployees.push(new Employee(hr, "Albrecht Dasgeier", 350001));
+allEmployees.push(new Employee(marketing, "Magnus AcMamakind", 235003));
+allEmployees.push(new Employee(marketing, "Magnus BcMamakind", 235002));
+allEmployees.push(new Employee(marketing, "Magnus CcMamakind", 235001));
+allEmployees.push(new Employee(it, "Ingo Anternet", 250003));
+allEmployees.push(new Employee(it, "Ingo Bnternet", 250002));
+allEmployees.push(new Employee(it, "Ingo Cnternet", 250001));
 //==============================================================================
 // FUNCTIONS
 
