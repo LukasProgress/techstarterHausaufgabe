@@ -10,17 +10,17 @@ class Company {
 
 
 class Department {
-    constructor(name, company, boss) {
-        this.name = name;
+    constructor(company, name, boss) {
         this.company = company;
+        this.name = name;
         this.boss = boss;
     }
 }
 
 class Employee {
-    constructor(name, department, salary) {
-        this.name = name;
+    constructor(department, name, salary) {
         this.department = department;
+        this.name = name;
         this.salary = salary;
     }
 }
@@ -74,8 +74,10 @@ allEmployees.push(new Employee(it, "Ingo Cnternet", 250001));
 //==============================================================================
 //main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
 function main(){
+    
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
-
+    const employeeNames = allEmployees.map(employee => employee.name);
+    console.log(employeeNames);
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
 
     //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
