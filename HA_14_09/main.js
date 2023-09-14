@@ -8,7 +8,20 @@ class Company {
     }
 }
 
+class Department {
+    constructor(name, boss){
+        this.name = name;
+        this.boss = boss;
+    }
+}
 
+class Employee {
+    constructor(Department, name, salary){
+        this.Department = Department;
+        this.name = name;
+        this.salary = salary;
+    }
+}
 
 
 
@@ -22,6 +35,7 @@ let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
 //TODO: 2. Füge ein weiteres Department hinzu
+let dataManagement = new Department(bigMoneyCorp, "dataManagement", "Daten Dexter" )
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
