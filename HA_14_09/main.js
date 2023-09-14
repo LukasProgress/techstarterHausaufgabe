@@ -51,6 +51,7 @@ allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
 allEmployees.push(new Employee(hr, "Bartek Bubusan", 60000));
 allEmployees.push(new Employee(hr, "Abi Abseitsfahne", 62000));
 allEmployees.push(new Employee(hr, "Dennis Doorbell", 30000));
+allEmployees.push(new Employee(it, "Ivan Ivanovich", 38000));
 allEmployees.push(new Employee(it, "Enrico Eberhart", 32000));
 allEmployees.push(new Employee(it, "Cristoph Cramling", 75000));
 allEmployees.push(new Employee(it, "Lukas Luxusmensch", 4000000));
