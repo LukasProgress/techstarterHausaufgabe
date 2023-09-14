@@ -98,8 +98,8 @@ function main(){
         .filter(emp => emp.salary > 35000)
         .map(emp => emp.name);
     console.log(highSalaryEmployeeNames);
-}
-main();
+
+
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
 
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
