@@ -34,6 +34,7 @@ let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
 //TODO: 2. Füge ein weiteres Department hinzu
+let yourDepartment = new Department(bigMoneyCorp, "Your Department", "Your Boss");
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -45,6 +46,24 @@ allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
+let hrEmployees = [];
+let marketingEmployees = [];
+let BikiniBottomEmployees = [];
+
+hrEmployees.push(new Employee(hr, "Larry", 38000));
+hrEmployees.push(new Employee(hr, "Sponge", 39000));
+hrEmployees.push(new Employee(hr, "Gary", 40000));
+
+marketingEmployees.push(new Employee(marketing, "Thadeus", 31000));
+marketingEmployees.push(new Employee(marketing, "Plankton", 32000));
+marketingEmployees.push(new Employee(marketing, "Perla", 33000));
+
+BikiniBottomEmployees.push(new Employee(BikiniBottom, "Mr. Crabs", 4200000)); // Der Chef in Ihrem Department mit Millionen Gehalt
+BikiniBottomEmployees.push(new Employee(BikiniBottom, "Miss. Puff", 43000));
+BikiniBottomEmployees.push(new Employee(BikiniBottom, "Sandy", 44000));
+
+// Alle Angestellten zusammenführen
+allEmployees = allEmployees.concat(hrEmployees, marketingEmployees, BikiniBottomEmployees);
 //==============================================================================
 // FUNCTIONS
 
