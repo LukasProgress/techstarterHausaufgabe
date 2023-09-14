@@ -18,7 +18,7 @@ class Employee {
     constructor(department, name, salary){
         this.department = department;
         this.name = name;
-        this.salary = this.salary;
+        this.salary = salary;
     }
 }
 
@@ -35,7 +35,9 @@ const bigMoneyCorp = new Company("Big Money Corporations");
 let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
+
 //TODO: 2. Füge ein weiteres Department hinzu
+let it = new Department(bigMoneyCorp, "IT", "Nikolas Fettzwerk" )
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -47,7 +49,17 @@ allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
+allEmployees.push(new Employee(hr, "Albrecht Besbeier", 3500000));
+allEmployees.push(new Employee(hr, "Albrecht Cesgeier", 3300000));
+allEmployees.push(new Employee(hr, "Albrecht Desgeier", 3700000));
 //==============================================================================
+allEmployees.push(new Employee(marketing, "Magnus McPapakind", 2430000));
+allEmployees.push(new Employee(marketing, "Magnus McOpakind", 2650000));
+allEmployees.push(new Employee(marketing, "Magnus McOmakind", 2750000));
+
+allEmployees.push(new Employee(it, "Nikolas Fettzwerk", 17500000));
+allEmployees.push(new Employee(it, "Nikolas Bettzwerk", 6400000 ));
+allEmployees.push(new Employee(it, "Nikolas Notzwerk", 5700000));
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
