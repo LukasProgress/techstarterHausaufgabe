@@ -34,8 +34,13 @@ const bigMoneyCorp = new Company("Big Money Corporations");
 let finance = new Department(bigMoneyCorp, "Finance", "Gerhard Geldsack");
 let hr = new Department(bigMoneyCorp, "Human Ressources", "Albrecht Aasgeier");
 let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
+
+
 //TODO: 2. Füge ein weiteres Department hinzu
-let dataManagement = new Department(bigMoneyCorp, "dataManagement", "Daten Dexter" )
+let dataManagement = new Department(bigMoneyCorp, "dataManagement", "Daten Dexter" );
+//hier kommt der Chef
+let dataManagementBoss = new Employee(dataManagement, "Daten Dexter", 3000000);
+
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -46,15 +51,32 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
+
+
 // TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
+
+allEmployees.push(new Employee(hr, "Helga Humorfänger", 45000));
+allEmployees.push(new Employee(hr, "Fritz Freudenbinger", 1000000));
+allEmployees.push(new Employee(hr, "Lena Lacher", 40000));
+
+allEmployees.push(new Employee(marketing, "Felix Fiegentester", 60000));
+allEmployees.push(new Employee(marketing, "Lara Like", 55000));
+allEmployees.push(new Employee(marketing, "Bier Bobby", 45000));
+
+allEmployees.push(new Employee(dataManagement, "Witzbert Spaßsack", 50000));
+allEmployees.push(new Employee(dataManagement, "Teletoubie Johonson", 42000));
+allEmployees.push(new Employee(dataManagement, "Hannes Hanson", 57000))
 //==============================================================================
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
 
+
 //TODO: 5. Funktion raiseIncome
 
+
 //TODO: 6. doubleBossIncome
+
 
 //TODO: 7. averageIncome
 
