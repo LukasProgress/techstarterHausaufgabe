@@ -82,11 +82,19 @@ function main(){
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
 
     let listAllEmployees = allEmployees.map(employee => employee.name);
-    console.log(listAllEmployees);
+     console.log(listAllEmployees);
 
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
 
+    let hrEmployees = allEmployees.filter(employee => employee.department === hr);
+    let hrEmployeesNames = hrEmployees.map(employee => employee.name);
+    console.log(hrEmployeesNames)
+
     //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
+
+    let salaryOver35k = allEmployees.filter(employee => employee.salary >= 35000);
+    let EmployeeNames = salaryOver35k.map(employee => employee.name);
+    console.log(EmployeeNames)
     
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
 
