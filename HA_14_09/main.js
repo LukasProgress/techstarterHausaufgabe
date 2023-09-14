@@ -52,6 +52,7 @@ allEmployees.push(new Employee(hr,"Hans Diettrich",42000));
 allEmployees.push(new Employee(marketing,"Sabrina Schiesser",48000));
 allEmployees.push(new Employee(marketing,"Anne Mayer",50000));
 allEmployees.push(new Employee(marketing,"Chantall Huber",32000));
+allEmployees.push(new Employee(it,"Tony Stark", 999999999999));
 allEmployees.push(new Employee(it,"Dennis Diepolder",3000000));
 allEmployees.push(new Employee(it,"Hans Mayer",70000));
 allEmployees.push(new Employee(it,"Abahbdi Hamidad",95000));
@@ -84,7 +85,12 @@ function main(){
     allEmployees.filter(employee => employee.salary >= 35000)
                 .map(employee => console.log(employee.name));
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
+   const andreasArmschlucker = allEmployees.find(employee => employee.name === "Andreas Armschlucker");
+   const boss = getBoss(andreasArmschlucker);
 
+   if(boss) {
+    console.log(`${andreasArmschlucker.name}'s Chef ist ${boss.name}`)
+   } else {console.log("Chef nicht gefunden")}
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
     //         eine Gehaltserhöhung von 4000 im Jahr zu geben
 
@@ -95,3 +101,18 @@ function main(){
 }
 
 main();
+
+function getBoss(employee) {
+    for(const department of [finance, hr, marketing, it]) {
+        if(department.name === employee.department.name) {
+            const boss = allEmployees.find(employee => employee.name === department.boss);
+            return boss;
+        }
+    }
+    console.log("Konnte nicht gefunden werden")
+    return null;
+}
+
+function raiseIncome(department, amount) {
+  
+}
