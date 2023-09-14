@@ -98,13 +98,7 @@ function main(){
     }
         const andreasArmschlucker = allEmployees.find(employee => employee.name === "Andreas Armschlucker");
         const boss = getBoss(andreasArmschlucker);
-
-        if (boss) {
-            console.log(`${andreasArmschlucker.name}'s Chef ist ${boss.name}`);
-          } else {
-            console.log(`${andreasArmschlucker.name} hat keinen Chef.`);
-          }
-
+        console.log(andreasArmschlucker)
 
     //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
     //         eine Gehaltserhöhung von 4000 im Jahr zu geben
