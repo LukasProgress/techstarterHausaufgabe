@@ -1,18 +1,30 @@
 //------------------------------------------------------------------------------ 
 // CLASSES
 
-//TODO: 1. Erstelle die beiden Klassen "Department" und "Employee"
+// Klasse "Company" wurde bereits erstellt
 class Company {
-    constructor(name){
+    constructor(name) {
         this.name = name;
     }
 }
 
+// Neue Klasse "Department" mit den Feldern "company", "name" und "boss"
+class Department {
+    constructor(company, name, boss) {
+        this.company = company;
+        this.name = name;
+        this.boss = boss;
+    }
+}
 
-
-
-
-
+// Neue Klasse "Employee" mit den Feldern "department", "name" und "salary"
+class Employee {
+    constructor(department, name, salary) {
+        this.department = department;
+        this.name = name;
+        this.salary = salary;
+    }
+}
 
 //==============================================================================
 // OBJECT INSTANCES
