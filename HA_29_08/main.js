@@ -1,21 +1,26 @@
 //LOGIN SCRIPT
 
 function makeUsers() {
-    // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
-    const user0 = {
-        name: "user0",
-        pw: "123"
-    }
+ 
+    
+    var allUsers = [admin];
     const user1 = {
-        name: "user1",
-        pw: "345"
-    };
-
-    const user2 = {
-        name: "user2",
-        pw: "567"
-    };
-    var allUsers = [user0, user1, user2];
+        name: "Gagarin",
+        pw: "Woschod1"
+      };
+      const user2 = {
+        name: "Tereschkowa",
+        pw: "Woschod2"
+      };
+      const user3 = {
+        name: "Leonov",
+        pw: "Woschod3"
+      };
+    
+      allUsers.push(user1);
+      allUsers.push(user2);
+      allUsers.push(user3);
+    
 
     return allUsers;
 }
@@ -40,12 +45,21 @@ function login(){
 function validLogin(username, password){
     allUsers = makeUsers();
     
-    // Durchlaufe das allUsers-Array, um nach übereinstimmenden Anmeldeinformationen zu suchen
-    for (let i = 0; i < allUsers.length; i++) {
-        if (allUsers[i].name === username && allUsers[i].pw === password) {
-            return true; // Rückgabe true, wenn gültige Anmeldeinformationen gefunden wurden
-        }
-    }
+  for (let i = 0; i < allUsers.length; i++) {
     
-    return false; // Rückgabe false, wenn keine gültigen Anmeldeinformationen gefunden wurden
+    if (allUsers[i].username === username) {
+      
+      if (allUsers[i].password === password) {
+        // Login ist erfolgreich
+        return true;
+      }
+    }
+  }
+
+  // Login ist nicht erfolgreich
+  return false;
 }
+const isLoginValid = validLogin("user1", "123456");
+if (!isLoginValid) {
+    alert("Benutzername oder Passwort für den Benutzer flasch");
+} 
