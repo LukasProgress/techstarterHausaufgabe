@@ -73,7 +73,7 @@ function getBoss(employeeName) {
         console.log(`Chef von Mitarbeiter ${employeeName} ist ${boss.name}.`);
         return boss;
     } else {
-        console.log(`Chef für ${employeeName} wurde nicht gefunden.`);
+        console.log(`Chef fuer ${employeeName} wurde nicht gefunden.`);
         return null;
     }
 }
@@ -112,9 +112,9 @@ function doubleBossIncome(departmentName) {
     
     if (boss) {
         boss.salary *= 2;
-        console.log(`${boss.name}'s Gehalt wurde verdoppelt und beträgt nun ${boss.salary} im Jahr.`);
+        console.log(`${boss.name}'s Gehalt wurde verdoppelt und betraegt nun ${boss.salary} im Jahr.`);
     } else {
-        console.log(`Boss für ${departmentName} wurde nicht gefunden.`);
+        console.log(`Boss fuer ${departmentName} wurde nicht gefunden.`);
     }
 }
 
