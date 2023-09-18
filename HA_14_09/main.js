@@ -45,7 +45,7 @@ allEmployees.push(new Employee(finance, "Lukas Probst", 45000));
 allEmployees.push(new Employee(finance, "Marcus Wunderle", 46000));
 allEmployees.push(new Employee(finance, "Andreas Armschlucker", 29500));
 allEmployees.push(new Employee(finance, "Roman Relativarm", 30400));
-// TODO: 2. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
+// TODO: 3. Füge mindestens je 3 neue Angestellte bei hr und marketing, sowie eurem department hinzu.
 allEmployees.push(new Employee(hr,"Dieter Peter",44000));
 allEmployees.push(new Employee(hr,"Juergen Vogel",40000));
 allEmployees.push(new Employee(hr,"Hans Diettrich",42000));
@@ -60,61 +60,6 @@ allEmployees.push(new Employee(it,"Abahbdi Hamidad",95000));
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
-
-//TODO: 5. Funktion raiseIncome
-
-//TODO: 6. doubleBossIncome
-
-//TODO: 7. averageIncome
-
-
-
-
-
-//==============================================================================
-//main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
-function main(){
-    //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
-    allEmployees.map(employee => console.log(employee.name));
-
-    //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
-    allEmployees.filter(employee => employee.department === hr)
-                .map(employee => console.log(employee.name));
-
-    //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
-    allEmployees.filter(employee => employee.salary >= 35000)
-                .map(employee => console.log(employee.name));
-
-
-
-
-    //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
-    const findBoss = "Andreas Armschlucker";
-    getBoss(findBoss);
-  
-    
-
-
-
-
-    //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
-    //         eine Gehaltserhöhung von 4000 im Jahr zu geben
-    const department = "Human Ressources"
-    raiseIncome(department, 4000);
-
-
-    //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
-    doubleBossIncome(department);
-
-
-    //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
-    averageIncome(department);
-}
-
-main();
-
-
-
 function getBoss(employeeName) {
 
     const employee = allEmployees.find(emp => emp.name === employeeName);
@@ -134,7 +79,7 @@ function getBoss(employeeName) {
 }
 
 
-
+//TODO: 5. Funktion raiseIncome
 function raiseIncome(departmentName, amount) {
     const department = [finance, hr, marketing, it].find(dept => dept.name === departmentName);
 
@@ -154,7 +99,7 @@ function raiseIncome(departmentName, amount) {
 }
 
 
-
+//TODO: 6. doubleBossIncome
 function doubleBossIncome(departmentName) {
     const department = [finance, hr, marketing, it].find(dept => dept.name === departmentName);
 
@@ -173,6 +118,8 @@ function doubleBossIncome(departmentName) {
     }
 }
 
+
+//TODO: 7. averageIncome
 function averageIncome(departmentName) {
     const department = [finance, hr, marketing, it].find(dept => dept.name ===departmentName);
 
@@ -191,3 +138,39 @@ function averageIncome(departmentName) {
     return avgSalary;
 
 }
+
+//==============================================================================
+//main function (Diese rufen wir auf, wenn die Datei ausgeführt wird.)
+function main(){
+    //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
+    allEmployees.map(employee => console.log(employee.name));
+
+    //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
+    allEmployees.filter(employee => employee.department === hr)
+                .map(employee => console.log(employee.name));
+
+    //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
+    allEmployees.filter(employee => employee.salary >= 35000)
+                .map(employee => console.log(employee.name));
+
+
+    //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
+    const findBoss = "Andreas Armschlucker";
+    getBoss(findBoss);
+  
+
+    //TODO: 5. Nutze die Funktion raiseIncome() um allen Angestellten, die in "Human Ressources" arbeiten (Außer dem chef) 
+    //         eine Gehaltserhöhung von 4000 im Jahr zu geben
+    const department = "Human Ressources"
+    raiseIncome(department, 4000);
+
+
+    //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
+    doubleBossIncome(department);
+
+
+    //TODO: 7. Nutzt averageIncome() um euch das Durschnittsgehalt eures eigenen Departments ausgeben zu lassen.
+    averageIncome(department);
+}
+
+main();
