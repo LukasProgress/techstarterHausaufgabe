@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old HTML</title>
+    <script>
+        function changeColor() {
+            const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector("h1").style.color = randomColor;
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button onclick="changeColor()">Zufällige Farbe</button>
+</body>
+</html>
