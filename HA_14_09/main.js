@@ -34,7 +34,7 @@ let marketing = new Department(bigMoneyCorp, "Marketing", "Magnus McMamakind");
 
 //TODO: 2. Füge ein weiteres Department hinzu
 
-let it = new Department(bigMoneyCorp, "IT", "boss");
+let it = new Department(bigMoneyCorp, "IT", "Max MUstermann");
 
 //Wir speichern alle angestellten in einem einzigen Array:
 let allEmployees = []
@@ -81,7 +81,7 @@ function main(){
 
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
 
-    let hrEmployees = allEmployees.filter(employee => employee.department === hr);
+    let hrEmployees = allEmployees.filter(employee => employee.department.name === "Human Ressources");
     let hrEmployeesNames = hrEmployees.map(employee => employee.name);
     //console.log(hrEmployeesNames)
 
@@ -93,8 +93,8 @@ function main(){
     
     //TODO: 4. Nutze die Funktion getBoss() um den Chef von "Andreas Armschlucker" zu finden und auszugeben.
 
-    function getBoss(employee){
-        const department = employee.department
+   /* function getBoss(employee){
+        const department = employee.department.boss
     }
         const andreasArmschlucker = allEmployees.find(employee => employee.name === "Andreas Armschlucker");
         const boss = getBoss(andreasArmschlucker);
@@ -104,7 +104,7 @@ function main(){
     //         eine Gehaltserhöhung von 4000 im Jahr zu geben
 
     function raiseIncome(department, amount) {
-        department.company.employees.forEach(employee => {
+        department.company.employee.forEach(employee => {
           if (employee.department === department && employee !== department.boss) {
             employee.salary += amount;
           }
@@ -113,7 +113,7 @@ function main(){
         const hrDepartment = hr;
         raiseIncome(hrDepartment, 4000);
 
-    //TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
+    /*///TODO: 6. Nutze die Funktion doubleBossIncome() um dem Boss von HR das doppelte gehalt zu geben
 
     function doubleBossIncome(department) {
         const boss = department.boss;
@@ -142,4 +142,4 @@ function main(){
       
 }
 
-main();
+main();*/
