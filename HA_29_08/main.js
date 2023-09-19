@@ -2,6 +2,7 @@
 
 
 function makeUsers() {
+<<<<<<< HEAD
     // TODO 2. Lösche den standard user und Füge deine eigenen User ein:
     const user1 = {
         name: "Don",
@@ -17,6 +18,28 @@ function makeUsers() {
     }
     var allUsers = [user1, user2, user3];
 
+=======
+ 
+    
+    var allUsers = [admin];
+    const user1 = {
+        name: "Gagarin",
+        pw: "Woschod1"
+      };
+      const user2 = {
+        name: "Tereschkowa",
+        pw: "Woschod2"
+      };
+      const user3 = {
+        name: "Leonov",
+        pw: "Woschod3"
+      };
+    
+      allUsers.push(user1);
+      allUsers.push(user2);
+      allUsers.push(user3);
+    
+>>>>>>> main
 
     return allUsers;
 }
@@ -38,6 +61,7 @@ function login(){
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
 function validLogin(username, password){
     allUsers = makeUsers();
+<<<<<<< HEAD
     // TODO: 3. Programmiere die Funktion validLogin
     for (let i = 0; i < allUsers.length; i++) {
         if (allUsers[i].username === username && allUsers[i].password === password) {
@@ -46,3 +70,24 @@ function validLogin(username, password){
     }
     return false;
 }
+=======
+    
+  for (let i = 0; i < allUsers.length; i++) {
+    
+    if (allUsers[i].username === username) {
+      
+      if (allUsers[i].password === password) {
+        // Login ist erfolgreich
+        return true;
+      }
+    }
+  }
+
+  // Login ist nicht erfolgreich
+  return false;
+}
+const isLoginValid = validLogin("user1", "123456");
+if (!isLoginValid) {
+    alert("Benutzername oder Passwort für den Benutzer flasch");
+} 
+>>>>>>> main
