@@ -70,7 +70,15 @@ allEmployees.push(new Employee(dataManagement, "Hannes Hanson", 57000))
 // FUNCTIONS
 
 //TODO: 4. Funktion getBoss
+function getBoss(EmployeeName) {
+    const Employee = allEmployees, find(emp => emp.name === EmployeeName);
+    if (Employee) {
+        return Employee.Department.boss;
 
+    } else {
+        return "Mitarbeiter nicht gefunden"
+    }
+}
 
 //TODO: 5. Funktion raiseIncome
 
@@ -89,7 +97,10 @@ allEmployees.push(new Employee(dataManagement, "Hannes Hanson", 57000))
 function main(){
     //TODO: 3. Gib die Namen aller Angestellter auf der Konsole aus:
 
+
     //TODO: 3. Gib die Namen aller Angestellter in hr auf der Konsole aus:
+
+
 
     //TODO: 3. Gib die Namen aller Angestellten mit einem Gehalt von mehr als 35.000 im Jahr aus
     
