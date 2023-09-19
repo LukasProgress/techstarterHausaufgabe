@@ -5,7 +5,13 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hallo Welt!');
+  res.send(`
+    <h1>Hallo Welt!</h1>
+    <ul>
+      <li><a href="/oldhtml">Alte HTML Seite</a></li>
+      <li><a href="/cat/Hello">Katze sagt Hello</a></li>
+    </ul>
+  `);
 });
 
 app.get('/oldhtml', (req, res) => {
