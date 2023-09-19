@@ -1,0 +1,14 @@
+{
+  "name": "ha_19_09",
+  "version": "1.0.0",
+  "description": "Moin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Domi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
