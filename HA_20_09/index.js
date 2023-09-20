@@ -13,7 +13,22 @@ const form = `
     <input name="pw" type="password">
     <button type="submit">Login</button>
 </form>
+<a href="/register"><button type="button">Registrieren</button></a>
 `
+
+const form2 =`
+<form method="post" action="/register">
+    <label for="name">Name:</label>
+    <input name="name" type="text">
+    <label for="pw">Passwort:</label>
+    <input name="pw" type="password">
+    <label for="pw2" >Passwort wiederholen:</label>
+    <input name="pw2" type="password">
+    <button type="submit">Registrieren</button>
+</form>
+`
+
+
 
 const user = [
     {name: "Lukas", passwort: "123"},
@@ -23,6 +38,10 @@ const user = [
 
 app.get("/", (req, res) => {
     res.send(form)
+})
+
+app.get("/register", (req, res) => {
+    res.send(form2)
 })
 
 app.post("/login", (req, res) => {
@@ -37,6 +56,31 @@ app.post("/login", (req, res) => {
 
     res.send(`Login fehlgeschlagen`)
 }) 
+
+app.post("/register", (req, res) => {
+    const {name, pw, pw2} = req.body
+
+    if (pw !== pw2) {
+        res.send("Sie müssen zwei mal das gleiche Passwort eingeben")
+        return
+    }
+    
+    const newUser = {name, pw}
+    user.push(newUser)
+
+    res.send("Neuer Benutzer angelegt!")
+    
+    
+/* Konsolenausgabe: Uncaught (in promise) Error: Illegal argument undefined
+    at e.exports (content.js:33:95534)
+    at content.js:73:1477043
+    at p (content.js:73:185751)
+    at Generator._invoke (content.js:73:185504)
+    at Generator.next (content.js:73:186114)
+    at r (content.js:73:192157)
+    at s (content.js:73:192360)
+*/
+})
 
 app.listen(port, () => {
     console.log("server listens on port", port)
