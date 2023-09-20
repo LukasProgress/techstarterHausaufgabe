@@ -66,7 +66,7 @@ app.post('/register', (req, res) => {
     saveUsers(); // Speichere Benutzerdaten in die Datei
     res.send('Registrierung erfolgreich! Sie können sich jetzt anmelden.');
   }
-});
+}); 
 
 app.post("/login", (req, res) => {
   const { name, pw } = req.body;
