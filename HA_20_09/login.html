@@ -1,0 +1,45 @@
+<!-- HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>
+    <title>Registrierung</title>
+</head>
+<body>
+    <h1>Registrierung</h1>
+    <form id="registrationForm">
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password1">Passwort:</label>
+        <input type="password" id="password1" name="password1" required><br><br>
+
+        <label for="password2">Passwort erneut eingeben:</label>
+        <input type="password" id="password2" name="password2" required><br><br>
+
+        <button type="submit">Registrieren</button>
+    </form>
+
+    <script>
+        // JavaScript
+        const registrationForm = document.getElementById('registrationForm');
+
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+
+            const username = document.getElementById('username').value;
+            const password1 = document.getElementById('password1').value;
+            const password2 = document.getElementById('password2').value;
+
+            if (password1 === password2) {
+                // Passwörter stimmen überein, Benutzerobjekt erstellen und an das Benutzerarray anhängen
+                const newUser = { username, password: password1 };
+                // Hier könntest du den Benutzer in einem Array oder einer Datenbank speichern
+                console.log('Registrierung erfolgreich:', newUser);
+            } else {
+                alert('Passwörter stimmen nicht überein.');
+            }
+        });
+    </script>
+</body>
+</html>
