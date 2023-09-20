@@ -1,5 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
+import nodemon from "nodemon"
 
 const port = 3000
 const app = express()
@@ -12,8 +13,10 @@ const form = `
     <label for="pw">Passwort:</label>
     <input name="pw" type="password">
     <button type="submit">Login</button>
+    <button type="button" onclick="window.location.href='/register'"> Hier geht es zum Regi</button>
 </form>
 `
+
 
 const user = [
     {name: "Lukas", passwort: "123"},
@@ -37,6 +40,29 @@ app.post("/login", (req, res) => {
 
     res.send(`Login fehlgeschlagen`)
 }) 
+app.get("/register", (req, res) => {
+    const regiForm = `
+    <form method="post" action="/register">
+        <label for="name">Name:</label>
+        <input name="name" type="text" required>
+        <label for="pw">Passwort:</label>
+        <input name="pw" type="password" required>
+        <label for="pw-again">Passwort wiederholen:</label>
+        <input name="pw-again" type="password" required>
+        
+
+    </form>
+        <button type="submit">Registrieren</button>
+    `
+    res.send(regiForm)
+})
+app.post("/register", (req, res) => {
+    const {name, pw} = req.body
+
+    user.push({name, passwort: pw})
+    res.send(`Erfolgrreich Benutzer: ${name} registriert`)
+})
+
 
 app.listen(port, () => {
     console.log("server listens on port", port)
