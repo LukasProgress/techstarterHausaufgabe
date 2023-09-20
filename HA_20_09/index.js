@@ -47,10 +47,6 @@ app.get("/", (req, res) => {
     res.send(form)
 })
 
-app.get("/", (req, res) => {
-    res.send(registerForm)
-})
-
 app.post("/login", (req, res) => {
     const {name, pw} = req.body
 
