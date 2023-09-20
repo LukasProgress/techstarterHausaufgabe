@@ -64,7 +64,7 @@ app.post('/register', (req, res) => {
         return;
     }
     const existingUser = user.find(u => u.name === name);
-    if(existUser) {
+    if(existingUser) {
         res.send('Benutzername bereits vergeben')
         return;
     }
