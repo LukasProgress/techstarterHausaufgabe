@@ -13,6 +13,20 @@ const form = `
     <input name="pw" type="password">
     <button type="submit">Login</button>
 </form>
+<br>
+<a href="/register">Registrieren</a> <!-- Button zur Registrierung hinzufügen -->
+`
+
+const registerForm = ` <!-- Neues Registrierungsformular -->
+<form method="post" action="/do-register">
+    <label for="name">Name:</label>
+    <input name="name" type="text">
+    <label for="pw">Passwort:</label>
+    <input name="pw" type="password">
+    <label for="pw-repeat">Passwort wiederholen:</label>
+    <input name="pw-repeat" type="password">
+    <button type="submit">Registrieren</button>
+</form>
 `
 
 const user = [
@@ -25,6 +39,10 @@ app.get("/", (req, res) => {
     res.send(form)
 })
 
+app.get("/register", (req, res) => {  // Route für die Registrierung hinzufügen
+    res.send(registerForm)
+})
+
 app.post("/login", (req, res) => {
     const {name, pw} = req.body
 
@@ -34,9 +52,22 @@ app.post("/login", (req, res) => {
             return
         } 
     }
-
     res.send(`Login fehlgeschlagen`)
-}) 
+})
+
+app.post("/do-register", (req, res) => {  // Route für die Verarbeitung der Registrierungsdaten
+    const {name, pw, 'pw-repeat': pwRepeat} = req.body
+    if (user.find(u => u.name === name)) {
+        res.send("Benutzername bereits vergeben!")
+        return
+    }
+    if (pw !== pwRepeat) {
+        res.send("Passwörter stimmen nicht überein!")
+        return
+    }
+    user.push({name, passwort: pw})
+    res.send("Registrierung erfolgreich!")
+})
 
 app.listen(port, () => {
     console.log("server listens on port", port)
