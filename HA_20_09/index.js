@@ -1,6 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
-
+import path from "path"; // Importiere 'path'-Modul
 const port = 3000
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
