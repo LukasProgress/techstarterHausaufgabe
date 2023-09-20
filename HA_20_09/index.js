@@ -14,28 +14,7 @@ const form = `
     <button type="submit">Login</button>
     <a href="/register"><button type="button">Neuen Benutzer anlegen</button></a>
 </form>
-`;
-app.get("/register", (req, res) => {
-    res.send(`
-        <html>
-        <head>
-            <title>Registrierung</title>
-        </head>
-        <body>
-            <h1>Registrierung</h1>
-            <form method="post" action="/register">
-                <label for="name">Name:</label>
-                <input name="name" type="text">
-                <label for="pw">Passwort:</label>
-                <input name="pw" type="password">
-                <label for="pwRepeat">Passwort wiederholen:</label>
-                <input name="pwRepeat" type="password">
-                <button type="submit">Registrieren</button>
-            </form>
-        </body>
-        </html>
-    `);
-});
+`
 
 const user = [
     {name: "Lukas", passwort: "123"},
@@ -59,6 +38,28 @@ app.post("/login", (req, res) => {
 
     res.send(`Login fehlgeschlagen`)
 }) 
+
+app.get("/register", (req, res) => {
+    res.send(`
+        <html>
+        <head>
+            <title>Registrierung</title>
+        </head>
+        <body>
+            <h1>Registrierung</h1>
+            <form method="post" action="/register">
+                <label for="name">Name:</label>
+                <input name="name" type="text">
+                <label for="pw">Passwort:</label>
+                <input name="pw" type="password">
+                <label for="pwRepeat">Passwort wiederholen:</label>
+                <input name="pwRepeat" type="password">
+                <button type="submit">Registrieren</button>
+            </form>
+        </body>
+        </html>
+    `);
+});
 
 app.post("/register", (req, res) =>{
     const { name, pw, pwRepeat } = req.body;
