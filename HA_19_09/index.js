@@ -19,8 +19,8 @@ app.get('/greet', (req, res) => {
   res.send('<h1>Herzlich Willkommen bei Jonathans Hausaufgaben!</h1>');
 });
 
-app.get('/todo', (req, res) => {
-  res.sendFile('techstarterHausaufgabe/HA _19_09/todo.html', { root: './' });
+app.get('/oldhtml', (req, res) => {
+  res.sendFile('todo.html', { root: './' });
 });
 
 app.get('/cat/:says', (req, res) => {
