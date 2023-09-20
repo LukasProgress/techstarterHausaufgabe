@@ -63,6 +63,11 @@ app.post("/login", (req, res) => {
 app.post("/register", (req, res) =>{
     const { name, pw, pwRepeat } = req.body;
 
+    if(pw !== pwRepeat) {
+        res.send('Passwort und Passwortwiederholung stimmen nicht überein.');
+        return
+    }
+
 user.push({name: name, passwort: pw});
 res.send('Registrierung erfolgreich');
 
