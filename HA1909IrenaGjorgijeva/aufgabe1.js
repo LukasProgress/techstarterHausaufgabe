@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
 // Starte den Server und lausche auf dem angegebenen Port
 app.listen(port, () => {
   console.log(`Server läuft auf Port ${port}`);
-});
+}); 

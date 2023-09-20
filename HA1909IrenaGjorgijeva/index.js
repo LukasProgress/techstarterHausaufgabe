@@ -1,15 +1,24 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3001;
 
-// Standard-Route ("/") - Startseite
+// Standard-Route ("/") - Startseite mit Hyperlinks
 app.get('/', (req, res) => {
-  res.send('Willkommen auf Irenas Startseite!');
+  // Verwende HTML, um Hyperlinks zu anderen Seiten hinzuzufügen
+  const homepage = `
+    <h1>Willkommen auf der Startseite!</h1>
+    <ul>
+      <li><a href="/greet">Einfache Begrüßung</a></li>
+      <li><a href="/oldhtml">Alte HTML-Seite</a></li>
+      <li><a href="/cat/Hausaugaben von Irena Gjorgijeva am 19 09 2023 ">Katzenbild mit Text (Meow)</a></li>
+    </ul>
+  `;
+  res.send(homepage);
 });
 
 // Route "/greet" - Einfache Begrüßung
 app.get('/greet', (req, res) => {
-  res.send('<h1>Hallo und Herzlich Willkommen zu Hausaufgabe am 19.09.2023!</h1>');
+  res.send('<h1>Hallo und Herzlich Willkommen zur Hausaufgabe am 19/09/2023!</h1>');
 });
 
 // Route "/oldhtml" - Senden einer alten HTML-Datei
@@ -25,7 +34,7 @@ app.get('/cat/:says', (req, res) => {
   // Katzenbild von der imageUrl senden
   // beispielsweise in einer HTML-Response anzeigen
 
-  res.send(`<img src="${imageUrl}" alt="Cat" />`);
+  res.send(`<img src="${imageUrl}" alt="Cat MEOW" />`);
 });
 
 // Starte  Express-Server
