@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
     <ul>
       <li><a href="/oldhtml">Alte HTML Seite</a></li>
       <li><a href="/cat/Hello">Katze sagt Hello</a></li>
+      <li><a href="/greet">Greet</a></li>
     </ul>
   `)
 })
