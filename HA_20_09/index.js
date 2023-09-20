@@ -72,3 +72,32 @@ app.post("/do-register", (req, res) => {  // Route für die Verarbeitung der Reg
 app.listen(port, () => {
     console.log("server listens on port", port)
 })
+
+app.post("/register", (req, res) => {
+    // Daten aus dem Formular extrahieren
+    const { name, pw, pw_repeat } = req.body;
+
+    // Überprüfen, ob die Passwörter übereinstimmen
+    if (pw !== pw_repeat) {
+        res.send("Die eingegebenen Passwörter stimmen nicht überein.");
+        return;
+    }
+
+    // Überprüfen, ob der Benutzername bereits existiert
+    for (let i = 0; i < user.length; i++) {
+        if (user[i].name === name) {
+            res.send("Benutzername ist bereits vergeben.");
+            return;
+        }
+    }
+
+    // Neues Benutzerobjekt erstellen und an das Array anhängen
+    user.push({
+        name: name,
+        passwort: pw // Beachten Sie, dass es besser wäre, das Passwort zu hashen, bevor Sie es speichern
+    });
+
+    res.send("Registrierung erfolgreich!");
+});
+
+// ... (Rest Ihres Codes)
