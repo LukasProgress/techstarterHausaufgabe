@@ -13,8 +13,9 @@ const form = `
     <label for="pw">Passwort:</label>
     <input name="pw" type="password">
     <button type="submit">Login</button>
-    <button type="button" onclick="window.location.href='/register'"> Hier geht es zum Regi</button>
+    
 </form>
+    <button type="button" onclick="window.location.href='/register'"> Hier geht es zum Regi</button>
 `
 
 
@@ -47,19 +48,22 @@ app.get("/register", (req, res) => {
         <input name="name" type="text" required>
         <label for="pw">Passwort:</label>
         <input name="pw" type="password" required>
-        <label for="pw-again">Passwort wiederholen:</label>
-        <input name="pw-again" type="password" required>
-        
+        <label for="pwagain">Passwort wiederholen:</label>
+        <input name="pwagain" type="password" required>
+        <button type="submit">Registrieren</button>
 
     </form>
-        <button type="submit">Registrieren</button>
     `
     res.send(regiForm)
 })
 app.post("/register", (req, res) => {
-    const {name, pw} = req.body
+    const { name, pw, pwagain } = req.body
 
-    user.push({name, passwort: pw})
+    if (pw !== pwagain) {
+        return res.send("Die Passwörter stimmen nicht überein. Bitte versuche es erneut.");
+    }
+
+    user.push({ name, passwort: pw })
     res.send(`Erfolgrreich Benutzer: ${name} registriert`)
 })
 
