@@ -12,8 +12,30 @@ const form = `
     <label for="pw">Passwort:</label>
     <input name="pw" type="password">
     <button type="submit">Login</button>
+    <a href="/register"><button type="button">Neuen Benutzer anlegen</button></a>
 </form>
-`
+`;
+app.get("/register", (req, res) => {
+    res.send(`
+        <html>
+        <head>
+            <title>Registrierung</title>
+        </head>
+        <body>
+            <h1>Registrierung</h1>
+            <form method="post" action="/register">
+                <label for="name">Name:</label>
+                <input name="name" type="text">
+                <label for="pw">Passwort:</label>
+                <input name="pw" type="password">
+                <label for="pwRepeat">Passwort wiederholen:</label>
+                <input name="pwRepeat" type="password">
+                <button type="submit">Registrieren</button>
+            </form>
+        </body>
+        </html>
+    `);
+});
 
 const user = [
     {name: "Lukas", passwort: "123"},
@@ -23,6 +45,10 @@ const user = [
 
 app.get("/", (req, res) => {
     res.send(form)
+})
+
+app.get("/", (req, res) => {
+    res.send(registerForm)
 })
 
 app.post("/login", (req, res) => {
@@ -37,6 +63,14 @@ app.post("/login", (req, res) => {
 
     res.send(`Login fehlgeschlagen`)
 }) 
+
+app.post("/register", (req, res) =>{
+    const { name, pw, pwRepeat } = req.body;
+
+user.push({name: name, passwort: pw});
+res.send('Registrierung erfolgreich');
+
+})
 
 app.listen(port, () => {
     console.log("server listens on port", port)
