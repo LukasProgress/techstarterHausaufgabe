@@ -18,7 +18,8 @@ const form = `
 const user = [
     {name: "Lukas", passwort: "123"},
     {name: "Bartek", passwort: "321"},
-    {name: "Abi", passwort: "Banane"}
+    {name: "Abi", passwort: "Banane"},
+    {name:"Anka",passwort:"Hanna"}
 ]
 
 app.get("/", (req, res) => {
