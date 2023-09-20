@@ -13,6 +13,7 @@ const form = `
     <input name="pw" type="password">
     <button type="submit">Login</button>
 </form>
+<a href="/register">Register</a>
 `
 
 const user = [
@@ -54,6 +55,23 @@ app.post("/login", (req, res) => {
 
     res.send(`Login fehlgeschlagen`)
 }) 
+
+app.post('/register', (req, res) => {
+    const {name, pw, pwRepeat} = req.body;
+    
+    if(pw !== pwRepeat) {
+        res.send('die passwoerter stimmen nicht ueberein');
+        return;
+    }
+    const existingUser = user.find(u => u.name === name);
+    if(existUser) {
+        res.send('Benutzername bereits vergeben')
+        return;
+    }
+
+    user.push({name, passwort: pw});
+    res.send('Registrierung erfolgreich!');
+})
 
 
 app.listen(port, () => {
