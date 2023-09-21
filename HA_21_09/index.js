@@ -1,48 +1,64 @@
-import express from 'express';
-import fs from 'fs';
-import { fileURLToPath } from 'url'; // Importieren Sie 'fileURLToPath' aus dem 'url'-Modul
-import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url); // Konvertieren Sie __filename
-const __dirname = path.dirname(__filename); // Konvertieren Sie __dirname
+import express from "express";
+import bodyParser from "body-parser";
+import path from "path";
 
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
-// Route zum Anzeigen einer Liste der verfügbaren Bücher
-app.get('/books', (req, res) => {
-  const booksDirectory = path.join(__dirname, 'books');
-  fs.readdir(booksDirectory, (err, files) => {
-    if (err) {
-      res.status(500).send('Fehler beim Lesen des Buchverzeichnisses.');
-    } else {
-      const bookList = files.map((file) => {
-        return {
-          name: file,
-          link: `/books/${file}`,
-        };
-      });
-      res.json(bookList);
-    }
-  });
-});
+// Array für Bücher erstellen
+const books = [
+  {
+    id: 1,
+    title: "Romeo and Juliet",
+    author: "William Shakespeare",
+    source: "Romeo and Juliet.txt"
+  },
+  {
+    id: 2,
+    title: "The Complete Works of William Shakespeare",
+    author: "William Shakespeare",
+    source: "The Complete Works of William Shakespeare.txt"
+  },
+  {
+    id: 3,
+    title: "The Republic",
+    author: "Plato",
+    source: "The Republic.txt"
+  },{
+    id: 4,
+    title: "Metamorphosis",
+    author: "Franz Kafka",
+    source: "Metamorphosis.txt"
+  },
+];
 
-// Route zum Servieren eines einzelnen Buches
-app.get('/books/:bookName', (req, res) => {
-  const { bookName } = req.params;
-  const bookPath = path.join(__dirname, 'books', bookName);
+// Route für die Home-Seite ("/")
+app.get("/", (req, res) => {
+  const bookList = books.map((book) => {
+    return `
+      <li>
+        ${book.title} by ${book.author}
+        <a href="/read/${book.source}"><button>lesen</button></a>
+      </li>
+    `;
+  }).join('');
 
-  fs.readFile(bookPath, 'utf-8', (err, content) => {
-    if (err) {
-      res.status(404).send('Buch nicht gefunden.');
-    } else {
-      res.send(content);
-    }
-  });
+  const html = `
+    <h1>Irenas virtuelle Bibliothek</h1>
+    <ul>${bookList}</ul>
+  `;
+  res.send(html);
 });
 
 app.listen(port, () => {
-  console.log(`Der Server ist auf http://localhost:${port} gestartet.`);
+  console.log(`Server läuft auf Port ${port}`);
 });
+
+// Route für das Lesen der Textdateien
+app.get("/read/:file", (req, res) => {
+    const { file } = req.params;
+    const filePath = path.resolve(process.cwd(), "books", file);
+    res.sendFile(filePath);
+  });
