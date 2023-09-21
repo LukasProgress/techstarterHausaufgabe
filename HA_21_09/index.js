@@ -1,8 +1,13 @@
 import express from 'express';
-
+import bodyParser from 'body-parser';
 import fs from 'fs/promises';
+import fetch from 'node-fetch'; 
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
 
 const port = 3000;
 
@@ -35,7 +40,10 @@ const buecher = [
 ]
 
 app.get('/', (req, res) => {
-    let htmlContent = '<h1>Meine Bibliothek</h1>';
+    let htmlContent = `<h1>Meine Bibliothek</h1>
+                        <a href='/add'>
+                            <button>Buch hinzufuegen</button>
+                            </a>`;
     htmlContent += '<ul>';
     buecher.map(buch => {
         htmlContent += `
@@ -57,6 +65,43 @@ app.get('/read/:file', (req, res) => {
         if (err) res.status(404).send('File not found');
     });
 });
+
+app.get('/add', (req, res) => {
+    const form = `
+        <form action="/addBook" method="post">
+            Title: <input type="text" name="title" required><br>
+            Author: <input type="text" name="author" required><br>
+            URL: <input type="text" name="url" required><br>
+            <input type="submit" value="Submit">
+        </form>
+        `;
+
+        res.send(form);
+})
+
+app.post('/addBook', async (req, res) => {
+    const { title, author, url } = req.body
+
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        const filename = `./${title.replace(/ /g, '_')}.txt`
+        await fs.writeFile(filename, text, 'utf-8');
+
+        buecher.push({
+            id:buecher.length + 1,
+            titel: title,
+            author: author,
+            source: filename
+        });
+
+        await fs.writeFile('./buecher.json', JSON.stringify(buecher), 'utf-8');
+        
+        res.redirect('/');
+    } catch (error) {
+        res.send('Fehler aufgetreten' + error.message);
+    }
+})
 
 
 app.listen(port, () =>{
