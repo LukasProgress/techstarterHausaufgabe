@@ -1,38 +1,49 @@
-import express from "express"
+import express from 'express';
+import bodyParser from 'body-parser';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const app = express()
-const port = 3000
+const app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.get(`/`, (req, res) => {
-    res.send("Hi Lukas!");
-
-});
+app.use(bodyParser.json());
 
 const books = [
-    {
-        id: 1,
-        title: 'Moby Dick',
-        author: 'Herman Melville',
-        source: 'techstarterHausaufgabe\HA_21_09\Moby-Dick.txt'
-    },
-    {
-        id: 2,
-        title: 'Frankenstein',
-        author: 'Mary Wollstonecraft Shelley',
-        source: 'techstarterHausaufgabe\HA_21_09\Frankenstein.txt'
-    },
-    {
-        id: 2,
-        title: 'The Strange Case of Dr. Jekyll and Mr. Hyde',
-        author: 'Robert Louis Stevenson',
-        source: 'techstarterHausaufgabe\HA_21_09\The Strange Case of Dr. Jekyll and Mr. Hyde.txt'
-    }
+
+  {
+    id: 1,
+    title: 'Moby Dick',
+    author: 'Herman Melville',
+    source: '/Moby-Dick.txt'
+  },
+  {
+    id: 2,
+    title: 'Frankenstein',
+    author: 'Mary Wollstonecraft Shelley',
+    source: '/Frankenstein.txt'
+  },
+  {
+    id: 3,
+    title: 'The Strange Case of Dr. Jekyll and Mr. Hyde',
+    author: 'Robert Louis Stevenson',
+    source: '/The Strange Case of Dr. Jekyll and Mr. Hyde.txt'
+  }
+
 ];
 
-app.get(`/books`, (req, res) => {
-    res.json(books);
+app.get('/', (req, res) => {
+  res.send('<h1>Meine Bibliothek</h1><ul>' +
+    books.map(book => `<li>${book.title} - ${book.author} <button onclick="window.location.href='/read${book.source}'">lesen</button></li>`).join('') +
+    '</ul>');
 });
 
+app.get('/read/:file', (req, res) => {
+  const file = req.params.file;
+  res.sendFile(file, { root: __dirname });
+});
+
+const port = 3000;
+
 app.listen(port, () => {
-    console.log(`Express-Server lauscht Port ${port}`);
+  console.log(`Server läuft auf Port ${port}`);
 });
