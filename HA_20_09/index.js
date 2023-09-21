@@ -44,6 +44,20 @@ app.get("/register", (req, res) => {
     res.send(form2)
 })
 
+app.post("/register", (req, res) => {
+    const {name, pw, pw2} = req.body
+
+    if (pw !== pw2) {
+        res.send("Sie müssen zwei mal das gleiche Passwort eingeben")
+        return
+    }
+    
+    const newUser = {name, passwort: pw}
+    user.push(newUser)
+
+    res.send("Neuer Benutzer angelegt!")
+    
+
 app.post("/login", (req, res) => {
     const {name, pw} = req.body
 
@@ -57,18 +71,7 @@ app.post("/login", (req, res) => {
     res.send(`Login fehlgeschlagen`)
 }) 
 
-app.post("/register", (req, res) => {
-    const {name, pw, pw2} = req.body
 
-    if (pw !== pw2) {
-        res.send("Sie müssen zwei mal das gleiche Passwort eingeben")
-        return
-    }
-    
-    const newUser = {name, pw}
-    user.push(newUser)
-
-    res.send("Neuer Benutzer angelegt!")
     
     
 /* Konsolenausgabe: Uncaught (in promise) Error: Illegal argument undefined
