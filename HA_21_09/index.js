@@ -1,5 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
+import fs from "fs"
 
 const port = 3000
 const app = express()
@@ -28,6 +29,8 @@ const html = `
         <body>
             <h1>Meine Bibliothek</h1>
             <ul>${bookList}</ul>
+            <br>
+            <a href="/add"><button type="button">Buch hinzufügen</button></a>
         </body>
     </html>
 `
@@ -38,6 +41,28 @@ res.send(html);
 app.get('/read/:file', (req, res) =>{
     const fileName = req.params.file;
     res.sendFile(fileName, { root: './'});
+})
+
+app.get('/add', (req, res) => {
+    res.send(`
+    <html>
+    <head>
+        <title>Buch hinzufügen</title>
+    </head>
+    <body>
+        <h1>Neues Buch</h1>
+        <form method="post" action="/addBook">
+            <label for="name">Titel:</label>
+            <input name="name" type="text">
+            <label for="author">Author:</label>
+            <input name="name" type="text">
+            <label for="url">URL:</label>
+            <input name="url" type="url">
+            <button type="submit">Buch hinzufügen</button>
+        </form>
+    </body>
+    </html>
+    `)
 })
 
 app.listen(port, () => {
