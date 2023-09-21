@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -32,10 +33,14 @@ const books = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('<h1>Meine Bibliothek</h1><ul>' +
-    books.map(book => `<li>${book.title} - ${book.author} <button onclick="window.location.href='/read${book.source}'">lesen</button></li>`).join('') +
-    '</ul>');
-});
+    res.send('<h1>Meine Bibliothek</h1>' +
+      '<ul>' +
+      books.map(book => `<li>${book.title} - ${book.author} <button onclick="window.location.href='/read${book.source}'">lesen</button></li>`).join('') +
+      '</ul>' 
+      );
+  });
+
+  
 
 app.get('/read/:file', (req, res) => {
   const file = req.params.file;
@@ -43,7 +48,8 @@ app.get('/read/:file', (req, res) => {
 });
 
 const port = 3000;
+const port1 = 80;
 
-app.listen(port, () => {
+app.listen(port,port1, () => {
   console.log(`Server läuft auf Port ${port}`);
 });
