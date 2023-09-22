@@ -1,0 +1,16 @@
+{
+  "name": "techstarterhausaufgabe",
+  "version": "1.0.0",
+  "description": "Dieses Repository ist dazu da, die Techstarter Hausaufgaben von Lukas besser verwalten zu könenn.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
