@@ -29,6 +29,21 @@ function renderBooks() {
 
 //-----------------------------------------------------------
 // HTTP METHODS:
+const htmlString = `
+  <button id="buchHinzufuegenButton">Buch hinzufügen</button>
+  <form action="/add" method="GET">
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title" required><br>
+    
+    <label for="author">Autor:</label>
+    <input type="text" id="author" name="author" required><br>
+    
+    <label for="url">URL (.txt Datei):</label>
+    <input type="text" id="url" name="url" value="https://www.gutenberg.org/cache/epub/37106/pg37106.txt" required><br>
+    
+    <input type="submit" value="Buch hinzufügen">
+  </form>
+`;
 
 //Home page
 app.get("/", (req, res) => {
@@ -41,6 +56,35 @@ app.get("/books/:file", (req, res) => {
     res.sendFile("/books/" + source, {root: "."})
 })
 
+const fs = require('fs');
+const axios = require('axios'); // Installieren Sie das "axios" Modul, um HTTP-Anfragen durchzuführen
+
+const url = 'https://www.gutenberg.org/cache/epub/37106/pg37106.txt'; // Beispiel-URL
+
+axios.get(url)
+  .then(response => {
+    // Speichern Sie den heruntergeladenen Text in einer Datei
+    fs.writeFileSync('heruntergeladenesBuch.txt', response.data);
+
+    // Fügen Sie das heruntergeladene Buch dem Array hinzu
+    const buch = {
+      title: req.body.title,
+      author: req.body.author,
+      url: 'heruntergeladenesBuch.txt' // Hier den Pfad zur gespeicherten Datei verwenden
+    };
+
+    // Fügen Sie das Buch dem Array hinzu und speichern Sie das Array als JSON-Datei
+    const bücher = [...bisherigeBücher, buch];
+    fs.writeFileSync('bücher.json', JSON.stringify(bücher));
+
+    // Senden Sie eine Antwort an den Client
+    res.send('Buch wurde hinzugefügt');
+  })
+  .catch(error => {
+    // Handle Fehler bei der Anforderung oder dem Speichern
+    console.error(error);
+    res.status(500).send('Fehler beim Hinzufügen des Buches');
+  });
 
 
 
