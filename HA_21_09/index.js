@@ -2,6 +2,7 @@ import express from "express"
 import bodyParser from "body-parser"
 import fs from "fs"
 
+
 const port = 3000
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -12,7 +13,7 @@ const books = [
     {id: "3", title: "Frankenstein", author: "Mary Wollstonecraft Shelley", source: "Frankenstein.txt"},
     {id: "4", title: "Romeo & Julia", author: "William Shakespeare", source: "Romeo_&_Julia.txt"}
 ]
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
     const bookList = books.map((book) =>`
     <li>
         <h3>${book.title}</h3>
@@ -63,6 +64,31 @@ app.get('/add', (req, res) => {
     </body>
     </html>
     `)
+})
+
+app.post('/addBook', async (req, res) => {
+    const { title, author, url } = req.body
+
+    const newBook = {
+        id: books.length +1,
+        title,
+        author,
+        souce: 'books${books.length + 1}.txt',
+    }
+
+    books.push(newBook);
+
+    res.redirect('/');
+})
+
+app.get('/read/:file', (req, res) => {
+    const fileName = req.params.file;
+    res.sendFile(fileName, {root: booksPath});
+})
+
+app.get('/books', async (req, res) => {
+    const books = await loadBooks();
+    res.json(books)
 })
 
 app.listen(port, () => {
