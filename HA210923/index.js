@@ -1,5 +1,8 @@
 import express from "express"
 import bodyParser from "body-parser"
+import fs from 'fs/promises';
+import fetch from 'node-fetch'; 
+
 
 const port = 3000
 const app = express()
@@ -58,6 +61,54 @@ app.get('/read/:file', (req, res) =>{
 })
 
 
+app.get('/add', (req, res) => {
+    res.send(`
+    <html>
+    <head>
+        <title>Buch hinzufügen</title>
+    </head>
+    <body>
+        <h1>Neues Buch</h1>
+        <form method="post" action="/addBook">
+            <label for="name">Titel:</label>
+            <input name="name" type="text">
+            <label for="author">Author:</label>
+            <input name="name" type="text">
+            <label for="url">URL:</label>
+            <input name="url" type="url">
+            <button type="submit">Buch hinzufügen</button>
+        </form>
+    </body>
+    </html>
+    `)
+})
+
+app.post('/addBook', async (req, res) => {
+    const { title, author, url } = req.body
+
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        const filename = `./${title}.txt`
+        await fs.writeFile(filename, text, 'utf-8');
+
+        library.push({
+            id:library.length + 1,
+            titel: title,
+            author: author,
+            source: filename
+        });
+
+        await fs.writeFile('./library.json', JSON.stringify(library), 'utf-8');
+        
+        res.redirect('/');
+    } catch (error) {
+        res.send('Fehler aufgetreten ' + error.message);
+    }
+})
+
+console.log(library)
+
 app.listen(port, () => {
-    console.log("Server läuft auf Port", port)
+    console.log("Server läuft auf Port ", port)
 })
