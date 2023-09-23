@@ -15,19 +15,18 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
-// Beispiel-Buchdaten mit korrekten Pfaden
 const books = ([
   {
     id: 1,
     title: 'TheCambridge',
     author: 'Unbekannt',
-    source: 'TheCambridge.txt' // Nur der Dateiname ohne den vollständigen Pfad
+    source: 'TheCambridge.txt' 
   },
   {
     id: 2,
     title: 'EvenStephen',
     author: 'Todd L. W. Doney',
-    source: 'EvenStephen.txt' // Nur der Dateiname ohne den vollständigen Pfad
+    source: 'EvenStephen.txt' 
   },
   {
     id: 3,
@@ -94,26 +93,26 @@ app.post('/addBook', async (req, res) => {
   const { title, author, url } = req.body;
 
   try {
-    // Speichern Sie das Buch lokal im Verzeichnis 'public/books/'
+    
     const fileName = join(__dirname, 'public', 'books', `${title}.txt`);
     
-    // Herunterladen und Speichern des Buchtextes
+    
     const response = await axios.get(url);
     await fs.writeFile(fileName, response.data, 'utf-8');
     console.log(`Das Buch wurde unter ${fileName} gespeichert.`);
 
-    // Erstellen Sie ein neues Buchobjekt mit dem lokalen Dateipfad
+    
     const newBook = {
       id: books.length + 1,
       title,
       author,
-      source: `books/${title}.txt`, // Ändern Sie den Pfad entsprechend
+      source: `books/${title}.txt`, 
     };
 
-    // Fügen Sie das neue Buch zum Array "books" hinzu
+    
     books.push(newBook);
 
-    // Umleitung zur Startseite nach dem Hinzufügen
+    
     res.redirect('/');
   } catch (error) {
     console.error('Fehler beim Herunterladen und Speichern des Buchtextes:', error.message);
