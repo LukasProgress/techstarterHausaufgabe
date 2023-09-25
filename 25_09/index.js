@@ -8,6 +8,10 @@ let deleteItem = (item) => {
     list = list.filter(x => x !== item);
 }
 
+let sortList = () => {
+    list.sort();
+}
+
 
 addToList("Kapern");
 addToList("Senf");
@@ -24,3 +28,13 @@ deleteItem('Tofu');
 
 console.log(list);
 
+sortList(list);
+
+console.log(list);
+
+
+/*
+
+https://github.com/LukasProgress/techstarterHausaufgabe/tree/Dennis_Diepolder/25_09
+
+*/
