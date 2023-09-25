@@ -1,0 +1,28 @@
+
+body
+{
+
+    background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  a:hover {
+    color: #fff;
+    background-color: #000;
+  }
+  
