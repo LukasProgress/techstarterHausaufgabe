@@ -1,0 +1,76 @@
+/*nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }*/
+  /* style.css */
+
+/* Allgemeine Stile */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  /* Medienabfragen für eine responsive Darstellung */
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+  
+    nav li {
+      display: block;
+      margin: 10px 0;
+    }
+  }
