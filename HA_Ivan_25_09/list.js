@@ -8,3 +8,7 @@ const ausgabeBestellliste = liste => {
 
 const bestellungen = ["Kapern", "Senf", "Butter", "Eier", "Hackfleisch", "Kartoffeln", "Zwiebeln"];
 ausgabeBestellliste(bestellungen);
+
+const sortierteArtikel = bestellungen.sort();
+
+console.log(sortierteArtikel);
