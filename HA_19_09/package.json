@@ -1,0 +1,14 @@
+{
+  "name": "aufgabenodejs2",
+  "version": "1.0.0",
+  "description": "Aufgabe Node.js II praxis teil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Severin Beyer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
