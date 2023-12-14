@@ -1,0 +1,106 @@
+// Importieren der benötigten Module
+const express = require('express');
+const app = express();
+const port = 3000;
+const path = require('path'); 
+const fs = require('fs'); 
+const axios = require('axios'); // Wir verwenden axios für HTTP-Anfragen
+
+// Ein Array, um unsere Buchdaten zu speichern
+const books = [
+  {
+    id: 1,
+    title: 'Buch 1: The Blue Castle',
+    author: 'Autor 1: The Project Gutenberg',
+    source: 'The Blue Castle.txt', // Dateiname des Buches
+  },
+  {
+    id: 2,
+    title: 'Buch 2: The Scarlet Letter',
+    author: 'Autor 2: The Project Gutenberg',
+    source: 'The Scarlet Letter.txt', // Dateiname des Buches
+  },
+];
+
+// Middleware für das Verarbeiten von URL-codierten Formularen
+app.use(express.urlencoded({ extended: true }));
+
+// Eine Route für die Startseite
+app.get('/', (req, res) => {
+  // Eine HTML-Seite wird als Antwort gesendet
+  res.send(`
+    <h1>Meine Bibliothek</h1>
+    <ul>
+      ${books.map((book) => `
+        <li>
+          <p>${book.title} von ${book.author}</p>
+          <!-- Links zum Lesen der Bücher werden generiert -->
+          <a href="/read/${encodeURIComponent(book.source)}" target="_blank"><button>Lesen</button></a>
+        </li>
+      `).join('')}
+    </ul>
+    <!-- Ein Link zum Hinzufügen von Büchern -->
+    <a href="/add"><button>Buch hinzufügen</button></a>
+  `);
+});
+
+// Eine Route für das Hinzufügen von Büchern
+app.get('/add', (req, res) => {
+  // Ein Formular wird als Antwort gesendet
+  res.send(`
+    <h1>Buch hinzufügen</h1>
+    <form action="/addBook" method="post">
+      <label for="title">Titel:</label>
+      <input type="text" id="title" name="title"><br>
+      <label for="author">Autor:</label>
+      <input type="text" id="author" name="author"><br>
+      <label for="url">URL zur .txt-Datei:</label>
+      <input type="text" id="url" name="url"><br>
+      <input type="submit" value="Buch hinzufügen">
+    </form>
+  `);
+});
+
+// Eine Route zum Verarbeiten des Hinzufügens von Büchern
+app.post('/addBook', async (req, res) => {
+  const { title, author, url } = req.body; // Daten aus dem Formular
+
+  try {
+    // Eine HTTP-Anfrage, um den Text der Buchdatei abzurufen
+    const response = await axios.get(url);
+    if (response.status !== 200) {
+      throw new Error('Fehler beim Herunterladen der Datei');
+    }
+
+    const text = response.data; // Textinhalt der Datei
+    const fileName = `book${books.length + 1}.txt`; // Neuer Dateiname
+
+    // Den Text in eine Datei schreiben
+    fs.writeFileSync(fileName, text);
+
+    // Ein neues Buchobjekt erstellen und zur Bücherliste hinzufügen
+    const newBook = {
+      id: books.length + 1,
+      title,
+      author,
+      source: fileName,
+    };
+    books.push(newBook);
+
+    res.redirect('/'); // Zurück zur Startseite
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Ein Fehler ist aufgetreten.');
+  }
+});
+
+// Eine Route zum Anzeigen der Buchinhalte
+app.get('/read/:file', (req, res) => {
+  const fileName = req.params.file; // Dateiname aus der URL
+  res.sendFile(fileName, { root: './' }); // Die Datei wird als Antwort gesendet
+});
+
+// Den Server starten und auf Port 3000 lauschen
+app.listen(port, () => {
+  console.log(`Server läuft auf Port ${port}`);
+});

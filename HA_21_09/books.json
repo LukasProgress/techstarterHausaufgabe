@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Buch 1: The Blue Castle",
+    "author": "Autor 1: The Project Gutenberg",
+    "source": "The Blue Castle.txt"
+  },
+  {
+    "id": 2,
+    "title": "Buch 2: The Scarlet Letter",
+    "author": "Autor 2: The Project Gutenberg",
+    "source": "The Scarlet Letter.txt"
+  },
+  {
+    "id": 3,
+    "title": "",
+    "author": "",
+    "source": "pg37106.txt"
+  }
+]
