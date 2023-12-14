@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <title>Nachrichten</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="utf-8">
+    </head>
+    <script>
+            var openAIKey = ""
+            var username = ""
+
+            const readStorage = () => {
+                openAIKey = localStorage.getItem("openai-key")
+                username = localStorage.getItem("username")
+            }
+
+            readStorage()
+    </script>
+    <body>
+        <nav>
+            <div style="display: flex; align-items: center; gap: 3rem;">
+                <h1>Aktuelle Nachrichten</h1>
+            </div>
+        <div>
+            <ul>
+                <li><a href="#">Technologie</a></li>
+                <li><a href="#">Sport</a></li>
+                <li><a href="#">Unterhaltung</a></li>
+            </ul>
+        </div>
+        </nav>
+        <section>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; justify-content: end; ">
+                    <input style="width: 16.3rem; height: 2rem;" id="username" type="text" value="" placeholder="Dein Name">
+                    <button
+                    onclick="saveName()"
+                    >Speichern</button>
+                    <input style="width: 16.3rem; height: 2rem;" id="openai-key" type="password" placeholder="Dein OpenAI API Key">
+                    <button onclick="saveKey()">Speichern (Lokal)</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <textarea 
+                    id="email-textarea"
+                    placeholder="Füge ein deine Email auf die du die Antwort haben willst" name="" id="" cols="55"
+                        rows="20"></textarea>
+                    <textarea 
+                    id="context"
+                    placeholder="Füge ein Kontext hinzu" name="" id="" cols="30" rows="20"></textarea>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <fieldset>
+                        <legend>Wähle deine Option aus:</legend>
+                        <input type="checkbox" id="casual" name="casual" checked />
+                        <label for="casual">😌 Lässig</label>
+                        <input type="checkbox" id="professional" name="professional" />
+                        <label for="professional">🧳 Formell</label>
+                        <input type="checkbox" id="yes" name="yes" />
+                        <label for="yes">👍 Zusage</label>
+                        <input type="checkbox" id="no" name="no" />
+                        <label for="no">👎 Absage</label>
+                    </fieldset>
+                    <select style="height: 2rem; width: 10rem;" name="cars" id="cars">
+                        <option value="mehr">Mehr...</option>
+                        <option disabled value="option-1">Option #1</option>
+                        <option disabled value="option-2">Option #2</option>
+                        <option disabled value="option-3">Option #3</option>
+                    </select>
+
+                    </div>
+
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column; gap: 1rem">
+                    <textarea 
+                    id="ai-output"
+                    placeholder="Hier ist der AI-Output" name="" id="" cols="55" rows="20"></textarea>
+                    <button 
+                    onclick="handleWrite()"
+                    style="height: 2rem">Schreibe</button>
+                </div>
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; background-color: gray; width: 16.4rem; color: white;">
+                        <ul style="list-style-type:square">
+                            <li>Mein PDF</li>
+                            <li>Mein PDF #2</li>
+                            <li>Mein PDF #3</li>
+                        </ul>
+                        <button 
+                        style="height: 2rem; margin-bottom: 0.2rem; ">Upload Document</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        const init =  () => {
+            // 1step: we pick an element (tag)
+            const usernameInput = document.querySelector("#username")
+            // 2step: we set a value of the element to something ...
+            usernameInput.value = username
+
+            const keyInput = document.querySelector("#openai-key")
+            keyInput.value = openAIKey
+        }
+        init()
+
+        const saveName = () => {
+            const nameInput = document.querySelector("#username")
+            const value = nameInput.value
+            localStorage.setItem("username", value)
+        }
+
+        const saveKey = () => {
+            const openAIInput = document.querySelector("#openai-key")
+            const value = openAIInput.value
+            localStorage.setItem("openai-key", value)
+
+        }
+
+        const generateResponse = async (email, context, isCasual, isProfessional, accepted, rejected ) => {
+            console.log("ai startet")
+
+            // https://api.openai.com/v1/chat/completions
+            const url = "https://api.openai.com/v1/chat/completions";
+            //console.log(openAIKey)
+
+            const prompt = `
+            Das ist die Email die ich erhalten habe: ${email}
+            Das ist der Context: ${context}
+            Das ist mein Name: ${username}
+            ${isCasual ? "Nutze einen lässigen Schreibstil" : ""}
+            ${isProfessional ? "Nutze einen formellen Schreibstil" : ""}
+            ${accepted ? "Sage bitte zu" : ""}
+            ${rejected ? "Sage bitte ab" : ""}
+
+            Schreibe eine Antwort in meinem Namem auf diese Email und nutze den Context um die Email so spezifisch wie möglich zu machen:
+            `
+
+            const body = {
+                model: "gpt-3.5-turbo",
+                messages: [{role: "user", content: prompt}],
+                temperature: 1,
+                max_tokens: 2000
+            }
+
+            const response = await fetch(url, {
+                headers: {
+                    "Authorization": "Bearer " + openAIKey,
+                    "Content-Type": "application/json"
+                },
+                method: "POST",
+                body: JSON.stringify(body)
+            })
+
+            const aiReponse = await response.json()
+            const choices = aiReponse.choices[0]
+            const message = choices.message
+            const content = message.content
+            console.log("ai is ready")
+            return content
+        } 
+
+
+        const handleWrite = async () => {
+            // 1 step you set the id
+            // 2 step you pick the eleement with document.querySelector("#id")
+
+            const emailValue = document.querySelector("#email-textarea").value
+            const contextValue = document.querySelector("#context").value
+
+            // here are the checkboxes
+            const casualValue = document.querySelector("#casual").checked 
+            const professionalValue = document.querySelector("#professional").checked 
+            const acceptValue = document.querySelector("#yes").checked 
+            const rejectValue = document.querySelector("#no").checked 
+
+            // id is set
+            // we pick an element based on the id
+            // const outputElement = {value: "hier ist der text"....}
+            const outputElement = document.querySelector("#ai-output")
+
+            // input has an attribute value
+            // textare has an attribute textContent
+
+            //outputElement.textContent = "hier kommt der content  aus der ai"
+
+            // we talk to openai severs
+           const aiResponse = await generateResponse(emailValue, contextValue, casualValue, professionalValue, acceptValue, rejectValue)
+
+           outputElement.textContent = aiResponse
+        }
+    </script>
+</html>

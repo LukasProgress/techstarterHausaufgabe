@@ -2,6 +2,24 @@
 
 
 function makeUsers() {
+<<<<<<< HEAD
+    const employee1 = {
+        name: "John",
+        pw: "123"
+    }
+
+    const employee2 = {
+        name: "Peter",
+        pw: "456"
+    }
+
+    const employee3 = {
+        name: "Tom",
+        pw: "789"
+    }
+
+    var allUsers = [employee1, employee2, employee3];
+=======
  
     
     var allUsers = [admin];
@@ -22,6 +40,7 @@ function makeUsers() {
       allUsers.push(user2);
       allUsers.push(user3);
     
+>>>>>>> cccc3f6ecc6c5f6371360e7898ed481b7f4ba417
 
     return allUsers;
 }
@@ -41,8 +60,28 @@ function login(){
 
 // Die Funktion validLogin wird ein gegebenes username-password paar nach validität überprüfen
 // Als Ergebnis muss validLogin einen Boolean zurückgeben!
-function validLogin(username, password){
+function validLogin(name, pw){
     allUsers = makeUsers();
+<<<<<<< HEAD
+
+    for (var i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].name === name && allUsers[i].pw === pw) {
+            return true;
+        }
+    }
+    return false
+}
+
+var nameToCheck = "Benutzername";
+var pwToCheck = "Passwort";
+
+if (validLogin(nameToCheck, pwdToCheck)) {
+    console.log("Anmeldung erfolgreich.");
+} else {
+    console.log("Anmeldung fehlgeschlagen. Benutzername oder Passwort ist falsch.");
+}
+
+=======
     
   for (let i = 0; i < allUsers.length; i++) {
     
@@ -62,3 +101,4 @@ const isLoginValid = validLogin("user1", "123456");
 if (!isLoginValid) {
     alert("Benutzername oder Passwort für den Benutzer flasch");
 } 
+>>>>>>> cccc3f6ecc6c5f6371360e7898ed481b7f4ba417
